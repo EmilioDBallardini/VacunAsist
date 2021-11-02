@@ -1,23 +1,26 @@
-
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col align-center">
+        <%= image_tag "https://www.local.gov.uk/sites/default/files/styles/page_banner/public/images/public%20health%20CC%20banner.png?itok=5erbq83E", title: "Logo", class: "logo" %>
       <nav class="nav bg-ligth">
         <li class="nav-item">
+            
             <%= link_to "Inicio", root_path, class:"nav-link"   %>
 
-        <% if user_signed_in? %>
-        <li class="nav-item">
-            <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class:"nav-link"   %>
-        </ li>
-        <% else %>
-            <li class="nav-item">
-                 <%= link_to "Iniciar sesión", new_user_session_path, class:"nav-link"   %>
-            </ li>
-            <li class="nav-item">
-                 <%= link_to "Registrarse", new_user_registration_path, class:"nav-link"   %>
-            </ li>
-        <%end%> 
+                <% if user_signed_in? %>
+                <li class="nav-item">
+                    <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class:"nav-link"%>
+                </li>
+                <% else %>
+
+                <li class="nav-item">
+                     <%= link_to "Iniciar sesión", new_user_session_path, class:"nav-link" %>
+                </li>
+                <li class="nav-item">
+                     <%= link_to "Registrarse", new_user_registration_path, class:"nav-link" %>
+                </li>
+
+            <% end %> 
         </nav>
     </div>
 
