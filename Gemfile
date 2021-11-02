@@ -56,3 +56,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'      # gema para modulo de autenticacion
+
+gem 'hirb'        # Gema para ver las tablas mas presentables

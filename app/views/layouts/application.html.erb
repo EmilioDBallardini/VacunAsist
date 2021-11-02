@@ -18,6 +18,15 @@
     <% if notice %>
       <p class="notice"><%= notice %></p>
     <%end%>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-info"> <%= flash[:notice] %> </div>
+    <% end %>
+    
+    <% if flash[:error] %>
+      <div class="alert alert-danger"> <%= flash[:error] %> </div>
+    <% end %>
+
     <% if alert %>
       <p class="alert"><%= alert %></p>
     <%end%>
