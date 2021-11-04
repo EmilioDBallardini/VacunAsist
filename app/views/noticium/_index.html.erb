@@ -7,6 +7,7 @@
       <h3>
         <%= noticia.titulo%> 
       </h3> 
+
       <h4>
         <%= noticia.subtitulo%>   
       </h4>
@@ -24,9 +25,8 @@
   <% end %>
 
 <%else%>
+
   
-
-
   <h5>Aún no hay noticias</h5>
 
 
@@ -37,7 +37,7 @@
   
   <% if current_user.tipo == "Administrador" %> 
     
-    <%= link_to "Agregar noticia", new_noticium_path, method: :create, class: 'btn btn-info btn-sm' %><br />
+    <%= link_to "Agregar noticia", new_noticium_path(@noticium), method: :create, class: 'btn btn-info btn-sm' %><br />
 
   <% end -%>
 

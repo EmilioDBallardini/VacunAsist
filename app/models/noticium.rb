@@ -1,2 +1,5 @@
 class Noticium < ApplicationRecord
+
+
+	
 end
