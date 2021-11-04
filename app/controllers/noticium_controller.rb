@@ -9,7 +9,7 @@ class NoticiumController < ApplicationController
 	end
 
 	def create
-        @noticium = Noticium.new(params.permit(:noticium))
+        @noticium = Noticium.new(params.require(:noticium).permit(:titulo,:subtitulo,:epigrafe,:img_url,:cuerpo))
 
         if @noticium.save
             redirect_to home_path, notice: "La noticia se cargó satisfactoriamente"

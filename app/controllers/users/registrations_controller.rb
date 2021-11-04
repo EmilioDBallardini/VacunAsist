@@ -6,10 +6,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #before_action :configure_sign_up_params, only: [:create]
   #before_action :configure_account_update_params, only: [:update]
 
-  private 
-  def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation,:token, :nombre, :apellido, :dni, :nacimiento)
-  end
+=begin
+
+
+=end
 
   # GET /resource/sign_up
   # def new
@@ -67,7 +67,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-=begin
+
 
   prepend_before_action :require_no_authentication, only: [:new, :create, :cancel]
   prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy]
@@ -235,7 +235,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     Devise.sign_in_after_change_password
   end
 
+  private 
+  def sign_up_params
+    params.require(:user).permit(:email, :password, :password_confirmation,:token, :nombre, :apellido, :dni, :nacimiento)
+  end
 
-=end
 
 end
