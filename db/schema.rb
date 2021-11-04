@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_03_165920) do
+ActiveRecord::Schema.define(version: 2021_11_04_162558) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2021_11_03_165920) do
     t.string "tipo"
     t.integer "dni"
     t.date "nacimiento"
+    t.string "nombre"
+    t.string "apellido"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
