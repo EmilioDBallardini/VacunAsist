@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_04_162558) do
+ActiveRecord::Schema.define(version: 2021_11_05_001607) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "campaigns", force: :cascade do |t|
+    t.string "nombre_campaña"
+    t.string "vacuna"
+    t.date "f_incio"
+    t.date "f_fin"
+    t.boolean "habilitada"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -25,6 +35,15 @@ ActiveRecord::Schema.define(version: 2021_11_04_162558) do
     t.string "epigrafe"
     t.string "titulo"
     t.string "subtitulo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_campaings", force: :cascade do |t|
+    t.string "user_id"
+    t.string "campaign_id"
+    t.string "vacunatorio_id"
+    t.date "f_registracion"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -44,6 +63,13 @@ ActiveRecord::Schema.define(version: 2021_11_04_162558) do
     t.string "apellido"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "vaccinations", force: :cascade do |t|
+    t.string "nombre"
+    t.text "direccion"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
