@@ -4,10 +4,10 @@
     
     <div class="col">
 
-      <h2>Edit <%= resource_name.to_s.humanize %></h2>
+      <h2>Editar <%= resource_name.to_s.humanize %></h2>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= devise_error_messages! %>
+        <%= render "users/shared/error_messages", resource: resource %>
 
         <div class="field">
           <%= f.label :nombre %><br />
@@ -53,7 +53,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :current_password %> <i>(necesitamos tu contraseña actual para confirmar los cambios)</i><br />
+          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
           <%= f.password_field :current_password, autocomplete: "current-password" %>
         </div>
 
@@ -62,12 +62,12 @@
         </div>
       <% end %>
 
+      <br>
       <h3>Cerrar la cuenta</h3>
 
-      <p> <%= button_to "Cerrar mi cuenta", registration_path(resource_name), data: { confirm: "Seguro?" }, method: :delete %></p>
+      <p>Unhappy? <%= button_to "Cerrar mi cuenta", registration_path(resource_name), data: { confirm: "Seguro?" }, method: :delete %></p>
 
       <%= link_to "Atras", :back %>
-
 
     </div>
   </div>
