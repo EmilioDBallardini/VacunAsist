@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_01_020006) do
+ActiveRecord::Schema.define(version: 2021_11_03_165920) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "noticia", force: :cascade do |t|
+    t.string "img_url"
+    t.string "pie_de_pagina"
+    t.string "cuerpo"
+    t.string "epigrafe"
+    t.string "titulo"
+    t.string "subtitulo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -26,6 +37,9 @@ ActiveRecord::Schema.define(version: 2021_11_01_020006) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "tipo"
+    t.integer "dni"
+    t.date "nacimiento"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

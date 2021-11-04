@@ -1,0 +1,29 @@
+<%= image_tag "http://c.files.bbci.co.uk/17D60/production/_111223679_coronathumbweb.jpg", title:"noticia", class:"img-fluid"%>
+<p>
+  Texto sobre la importancia de las vacunas en la ciudad de bla bla bla bla
+</p>
+
+<% @noticium.first do |noticia| %>
+  
+    <h3>
+      <%= noticia.titulo%> 
+    </h3> 
+    <h4>
+      <%= noticia.subtitulo%>   
+    </h4>
+    
+    <%= image_tag noticia.img_url, title:"noticia", class:"img-fluid" %> 
+
+    <h6>
+      <%= noticia.pie_de_pagina%>   
+    </h6>
+    
+    <p>
+      <%= noticia.cuerpo %>   
+    </p>
+    
+<% end %>
+
+
+<%= link_to "Agregar noticia", new_noticium_path, method: :create, class: 'btn btn-info btn-sm' %><br />
+

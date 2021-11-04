@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "bienvenida", to: "home#index"
 
   root to: "home#index"
-
+  
+  resources :noticium
+  post "noticium/new", to: "noticium#new"
 
 end
