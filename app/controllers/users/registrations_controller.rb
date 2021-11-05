@@ -69,8 +69,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
 
-  prepend_before_action :require_no_authentication, only: [:new, :create, :cancel]
-  prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy]
+  prepend_before_action :require_no_authentication, only: [:new, :create, :cancel, :update]
+  #prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy]
   prepend_before_action :set_minimum_password_length, only: [:new, :edit]
 
   # GET /resource/sign_up
@@ -237,7 +237,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private 
   def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation,:token, :nombre, :apellido, :dni, :nacimiento)
+    params.require(:user).permit(:nombre, :apellido, :dni, :nacimiento, :email, :password, :password_confirmation,:token)
   end
 
 

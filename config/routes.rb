@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations',
   }
+
+  devise_for :noticium, controllers:
+  {
+    noticium: 'noticium/noticium'
+  }
   
   resources :users
   post "users/edit", to: "users#edit"
