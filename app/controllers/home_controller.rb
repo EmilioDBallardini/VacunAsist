@@ -2,12 +2,10 @@ class HomeController < ApplicationController
 
   before_action :authenticate_user!
   def index   #"action" cada una tiene una vista, una funcion?
+    @usuario = current_user
   end
 
   def new
-  end
-
-  def index 
   end
 
   def create
@@ -18,4 +16,7 @@ class HomeController < ApplicationController
 
   def destroy
   end
+
+
+
 end

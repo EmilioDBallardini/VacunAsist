@@ -1,6 +1,13 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+
+  config.action_mailer.default_url_options = { host: '127.0.0.1', port: 3000 }
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {from: 'no-reply@example.com'}
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time

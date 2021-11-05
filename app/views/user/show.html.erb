@@ -4,6 +4,12 @@
     <input type="text" class="form-control" id="nombre">
   </div>
 
+  <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        
   <div class="col-md-6">
     <label for="apellido" class="form-label">Apellido</label>
     <input type="text" class="form-control" id="apellido">
