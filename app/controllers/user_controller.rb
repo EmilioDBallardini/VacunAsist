@@ -5,6 +5,7 @@ class UserController < ApplicationController
     end
 
     def show
+        @usuario=current_user
     end
 
     def update
