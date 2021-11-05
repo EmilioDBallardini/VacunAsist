@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   resources :noticium
   post "noticium/new", to: "noticium#new"
 
+  resources :user
+  post "user/show", to: "user#show"
+
 end
