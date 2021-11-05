@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   post "noticium/new", to: "noticium#new"
 
 
-  
+  get "user_campaing/new", to "user_campaing#new"
 
 end
