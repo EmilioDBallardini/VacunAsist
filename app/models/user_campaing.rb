@@ -1,2 +1,0 @@
-class UserCampaing < ApplicationRecord
-end

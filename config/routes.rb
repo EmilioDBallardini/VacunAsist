@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   resources :noticium
   post "noticium/new", to: "noticium#new"
 
-
-  get "user_campaing/new", to "user_campaing#new"
+  resources :usercampaings
+  get "usercampaing/new", to:"usercampaing#new"
+  post "usercampaing", to:"usercampaing#create"
 
 end

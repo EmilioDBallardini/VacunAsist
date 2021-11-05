@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_05_001607) do
+ActiveRecord::Schema.define(version: 2021_11_05_032918) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -48,6 +48,18 @@ ActiveRecord::Schema.define(version: 2021_11_05_001607) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "usercampaings", force: :cascade do |t|
+    t.date "f_registracion"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "vaccination_id", null: false
+    t.integer "campaign_id", null: false
+    t.index ["campaign_id"], name: "index_usercampaings_on_campaign_id"
+    t.index ["user_id"], name: "index_usercampaings_on_user_id"
+    t.index ["vaccination_id"], name: "index_usercampaings_on_vaccination_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -72,4 +84,7 @@ ActiveRecord::Schema.define(version: 2021_11_05_001607) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "usercampaings", "campaigns"
+  add_foreign_key "usercampaings", "users"
+  add_foreign_key "usercampaings", "vaccinations"
 end
