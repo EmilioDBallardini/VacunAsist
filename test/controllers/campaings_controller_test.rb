@@ -1,6 +1,6 @@
 require "test_helper"
 
-class UsercampaingsControllerTest < ActionDispatch::IntegrationTest
+class CampaingsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

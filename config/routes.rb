@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
 
+  resources :campaings
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -25,9 +26,12 @@ Rails.application.routes.draw do
 
   resources :user
   post "user/show", to: "user#show"
-  
-  resources :usercampaings
-  get "usercampaing/new", to:"usercampaing#new"
-  post "usercampaing", to:"usercampaing#create"
 
+  resources :campaing
+  get 'campaings', to: 'campaings#index'
+  get 'campaings/new', to: 'campaings#new'
+  post 'campaings', to: 'campaings#create'
+  get 'campaings/:id/edit', to: 'products#edit', as: 'editcampaing'
+  patch 'campaings/:id', to: 'campaings#update' 
+  delete 'campaings/:id', to: 'campaings#destroy'
 end

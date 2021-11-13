@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_05_030403) do
+ActiveRecord::Schema.define(version: 2021_11_13_210544) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "campaings", force: :cascade do |t|
+    t.text "name"
+    t.text "vacuna"
+    t.date "inicio"
+    t.date "fin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

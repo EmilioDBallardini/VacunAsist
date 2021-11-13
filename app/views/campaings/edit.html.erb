@@ -1,0 +1,22 @@
+<%= form_for @campaing do |f| %>
+
+    <div>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+    <div>
+        <%= f.label :vacuna %>
+        <%= f.text_field :vacuna %>
+    </div>
+    <div>
+        <%= f.label :incio %>
+        <%= f.date_field :inicio %>
+    </div>
+    <div>
+        <%= f.label :fin %>
+        <%= f.date_field :fin %>
+    </div>
+    <div>
+        <%= f.submit %>
+    </div>
+<%end%>
