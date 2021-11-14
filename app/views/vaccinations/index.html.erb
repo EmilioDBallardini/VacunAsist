@@ -1,0 +1,22 @@
+<h1>Listado de Vacunatorios de la ciudad de Las Breñas</h1>
+<table>
+    <tr>
+        <thead>
+            <th>Vacunatorio: </th>
+            <th>Direccion: </th>
+            <th>Contacto: </th>
+        </thead>
+    </tr>
+    <% @vaccinations.each do |v| %>
+        <tr>
+            <td><%= v.nombre %></td>
+            <td><%= v.direccion %></td>
+            <td><%= v.contacto %></td>
+            <td>
+                <%= link_to "Editar", editvaccination_path(v)%>
+                <%= link_to "Eliminar", v, method: :delete, data: { confirm: "¿Deseas eliminar el registro de este vacunatorio?"} %>
+            </td>
+        </tr>
+            <% end %>
+</table>
+<%= link_to "Ingresar vacunatorio", vaccinations_new_path%>
