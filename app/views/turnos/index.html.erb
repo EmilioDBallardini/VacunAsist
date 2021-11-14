@@ -1,0 +1,20 @@
+<h1>Listado de Turnos disponibles</h1>
+<table>
+    <tr>
+        <thead>
+            <th>Fecha y hora: </th>
+            <th>¿Turno disponible?: </th>
+        </thead>
+    </tr>
+    <% @turnos.each do |t| %>
+        <tr>
+            <td><%= t.Fecha_hora %></td>
+            <td><%= t.disponible %></td>
+            <td>
+                <%= link_to "Editar", editturno_path(t)%>
+                <%= link_to "Eliminar", t, method: :delete, data: { confirm: "¿Deseas eliminar este turno?"} %>
+            </td>
+        </tr>
+            <% end %>
+</table>
+<%= link_to "Ingresar turno nuevo", turnos_new_path%>

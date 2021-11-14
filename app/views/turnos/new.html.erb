@@ -1,0 +1,14 @@
+<%= form_for @turno do |f| %>
+
+    <div>
+        <%= f.label :Fecha_hora %>
+        <%= f.datetime_field :Fecha_hora%>
+    </div>
+    <div>
+        <%= f.label :disponible %>
+        <%= f.check_box :disponible %>
+    </div>
+    <div>
+        <%= f.submit %>
+    </div>
+<%end%>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_14_013506) do
+ActiveRecord::Schema.define(version: 2021_11_14_020442) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 2021_11_14_013506) do
     t.string "epigrafe"
     t.string "titulo"
     t.string "subtitulo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "turnos", force: :cascade do |t|
+    t.datetime "Fecha_hora"
+    t.boolean "disponible"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

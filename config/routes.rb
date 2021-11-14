@@ -42,4 +42,12 @@ Rails.application.routes.draw do
   patch 'vaccinations/:id', to: 'vaccinations#update' 
   delete 'vaccinations/:id', to: 'vaccinations#destroy'
 
+  resources :turnos
+  get 'turnos', to: 'turnos#index'
+  get 'turnos/new', to: 'turnos#new'
+  post 'turnos', to: 'turnos#create'
+  get 'turnos/:id/edit', to: 'turnos#edit', as: 'editturno'
+  patch 'turnos/:id', to: 'turnos#update' 
+  delete 'turnos/:id', to: 'turnos#destroy'
+
 end
