@@ -1,3 +1,4 @@
+<%= form_for @usuario do |f| %>
 <form class="row g-3">
   <div class="col-md-6">
     <label for="nombre" class="form-label">Nombre <%@usuario.email%> </label>
@@ -9,7 +10,7 @@
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
 
-        
+
   <div class="col-md-6">
     <label for="apellido" class="form-label">Apellido</label>
     <input type="text" class="form-control" id="apellido">
@@ -18,7 +19,7 @@
   <div class="col-12">
     <label for="email" class="form-label">Correo electróncico</label>
     <input type="text" class="form-control" id="email"  placeholder="correo electronico" value="<% params[:nombre] %>">
-    </div> 
+    </div>
   </div>
 
   <div class="col-12">
@@ -53,3 +54,4 @@
     <button type="submit" class="btn btn-primary">Sign in</button>
   </div>
 </form>
+<%end%>
