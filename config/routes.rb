@@ -12,8 +12,7 @@ Rails.application.routes.draw do
     noticium: 'noticium/noticium'
   }
   
-  resources :users
-  post "users/edit", to: "users#edit"
+  
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get "bienvenida", to: "home#index"
@@ -24,7 +23,9 @@ Rails.application.routes.draw do
   post "noticium/new", to: "noticium#new"
 
   resources :user
-  post "user/show", to: "user#show"
+  get "users/edit", to: "user#edit", as: 'useredit'
+  get "users/show", to: "user#show", as: 'showperfil'
+
 
   resources :campaings
   get 'campaings', to: 'campaings#index'
