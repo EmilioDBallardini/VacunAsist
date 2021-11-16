@@ -1,0 +1,20 @@
+<h1>Listado de Camapañas registradas</h1>
+<table>
+    <tr>
+        <thead>
+            <th>Campaña: </th>
+            <th>Vacuna: </th>
+        </thead>
+    </tr>
+    <% @campaingfor_users.each do |c| %>
+        <tr>
+            <td><%= c.campaing.name %></td>
+            <td><%= c.campaing.vacuna %></td>
+            <td>
+                <%= link_to "Editar", editcampaingfor_users_path(c)%>
+                <%= link_to "Eliminar", c, method: :delete, data: { confirm: "¿Desea eliminar el registro a esta campaña?"} %>
+            </td>
+        </tr>
+            <% end %>
+</table>
+<%= link_to "Registrarse a campaña", campaingfor_users_new_path%>

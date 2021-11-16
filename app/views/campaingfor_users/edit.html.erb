@@ -1,0 +1,10 @@
+<%= form_for @campaingfor_user do |f| %>
+
+    <div>
+        <%= f.label "Camapaña" %>
+        <%= f.select :campaing_id, options_from_collection_for_select(Campaing.all, :id, :name %>
+    </div>
+    <div>
+        <%= f.submit %>
+    </div>
+<%end%>
