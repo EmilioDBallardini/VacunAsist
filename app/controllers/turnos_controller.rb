@@ -37,6 +37,6 @@ class TurnosController < ApplicationController
 
     private
         def turno_params
-            params.require(:turno).permit(:Fecha_hora, :disponible)
+            params.require(:turno).permit(:Fecha_hora, :disponible, :vaccination_id)
         end
 end
