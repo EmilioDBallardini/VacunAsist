@@ -8,20 +8,31 @@
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= render "users/shared/error_messages", resource: resource %>
-
+        <p>
         <div class="field">
           <%= f.label :nombre %> <br />
           <%= f.text_field :nombre, autocomplete: "nombre" %>
         </div>
-
-        <p></p>
 
         <div class="field">
           <%= f.label :apellido, "Apellido/s"%><br />
           <%= f.text_field :apellido, autocomplete: "apellido" %>
         </div>
         
-        <p></p>
+        </p>
+
+        <p>
+        <div class="field">
+          <%= f.label :email, "Correo electrónico"%><br />
+          <%= f.email_field :email, autocomplete: "email" %>
+        </div>
+        
+        <div class="field">
+          <label for="doc"> DNI </label> <br />
+          <input type="integer" name="doc" value=<%= current_user.dni %>>
+        </div>
+
+        </p>
 
         <div class="actions">
           <%= f.submit "Guardar cambios" %>
@@ -31,8 +42,9 @@
       <br>
       <h3>Cerrar la cuenta</h3>
 
-      <p> Presiona el botón para cerrar tu cuenta <%= button_to "Cerrar mi cuenta", registration_path(resource_name), data: { confirm: "Seguro?" }, method: :delete %></p>
-
+      Presiona el botón para cerrar tu cuenta <%= button_to "Cerrar mi cuenta", registration_path(resource_name), data: { confirm: "¿Está seguro que desea cerrar la cuenta? Puede volver a crearla cuando desee" }, method: :delete %>
+      
+      <br>
       <%= link_to "Atras", :back %>
 
     </div>
