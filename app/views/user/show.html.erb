@@ -1,3 +1,6 @@
+ESTA SIN USO
+
+
 <div class="container">
   
       <h2>Mi perfil</h2>
@@ -7,8 +10,8 @@
         <div class="row">
           <div class="col">
               <div class="field">
-                <label for="inputName" class="form-label">Nombre</label>
-                <input type="nombre" id="inputName" autocomplete=@usuario.nombre readonly> 
+                <label for="inputName" class="form-label">Nombre</label><br />
+                <input type="nombre" id="inputName" value="<%=@usuario.nombre%>" readonly> 
              </div>
               <p>
              <div class="field">
@@ -37,12 +40,12 @@
             <p>
             <% if @usuario.enfermedad? %>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
                   <label class="form-check-label" for="flexCheckDefault">Padezco enfermedades prevalentes</label>
                 </div>
                 <% else %>
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">Padezco enfermedades prevalentes</label>
                   </div>
             <%end%>
