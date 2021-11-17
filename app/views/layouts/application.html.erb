@@ -13,10 +13,11 @@
 
   <body>
     
-    <%= render "partials/nav" %>  
-    
-    
+    <div class="container" >
 
+    <%= render "partials/nav" %>  
+
+    
     <% if flash[:notice] %>
       <div class="alert alert-info"> <%= flash[:notice] %> </div>
     <% end %>
@@ -26,8 +27,10 @@
     <% end %>
 
     <% if alert %>
-      <p class="alert"><%= alert %></p>
+       <div class="alert alert-danger"> <%= alert %> </div>
     <%end%>
+
+    </div>
     
     <%= yield %>
   </body>

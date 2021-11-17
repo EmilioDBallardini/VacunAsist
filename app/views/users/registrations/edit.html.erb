@@ -1,28 +1,79 @@
 <div class="container">
   
-  <div class="row">
-    
-    <div class="col">
+  
 
-      <h2>Cambiar mis datos</h2>
+      <h2>Mi perfil</h2>
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), method: :put) do |f| %>
         <%= render "users/shared/error_messages", resource: resource %>
-
-        <div class="field">
-          <%= f.label :nombre %> <br />
-          <%= f.text_field :nombre, autocomplete: "nombre" %>
-        </div>
-
-        <p></p>
-
-        <div class="field">
-          <%= f.label :apellido, "Apellido/s"%><br />
-          <%= f.text_field :apellido, autocomplete: "apellido" %>
-        </div>
         
-        <p></p>
+        <div class="row">
+          <div class="col">
+             <div class="field">
+                <%= f.label :nombre %> <br />
+                <%= f.text_field :nombre, autocomplete: "nombre" %>
+             </div>
+              <br>
+             <div class="field">
+               <%= f.label :email, "Correo electrónico"%><br />
+               <%= f.email_field :email, autocomplete: "email" %>
+             </div>
+             <br>
+               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                 <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
+               <div class="field">
+                  <%= f.label :password %> <i>(dejar en blanco si no se desea cambiar) </i><br />
+                  <%= f.password_field :password, autocomplete: "new-password" %>
+              <% if @minimum_password_length %>
+               <br />
+                  <em><%= @minimum_password_length %> caracteres como mínimo </em>
+                  <% end %>
+               </div>
+               <br>
+           </div>
 
+          <div class="col">
+            <div class="field">
+              <%= f.label :apellido, "Apellido/s"%><br />
+              <%= f.text_field :apellido, autocomplete: "apellido" %>
+            </div>
+            <br>
+            <div class="field">
+              <%= f.label :dni, "DNI" %><br />
+               <%= f.text_field :dni, autofocus: true, autocomplete: "dni" %>
+             </div>
+            <br>
+             <div class="field">
+                <%= f.label :password_confirmation, "Confirmar nueva contraseña" %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+              </div>
+          </div>
+
+          <div class="col">
+            <div class="field">
+              <%= f.label :nacimiento, "Fecha de nacimiento" %><br />
+              <%= f.date_field :nacimiento, autofocus: true, autocomplete: "nacimiento" %>
+            </div>
+            <br>
+            <div class="form-check">
+                <%= f.check_box :enfermedad %>
+                <%= f.label :enfermedad, "Padezco enfermedades prevalentes" %>
+            </div>
+          </div>
+        </div>
+
+        
+        
+      
+
+        <br>
+
+        <div class="field">
+          <%= f.label :current_password %> <i>(necesitamos tu contraseña actual para confirmar los cambios)</i><br />
+          <%= f.password_field :current_password, autocomplete: "current-password" %>
+        </div>
+        <br>
         <div class="actions">
           <%= f.submit "Guardar cambios" %>
         </div>
@@ -31,10 +82,10 @@
       <br>
       <h3>Cerrar la cuenta</h3>
 
-      <p> Presiona el botón para cerrar tu cuenta <%= button_to "Cerrar mi cuenta", registration_path(resource_name), data: { confirm: "Seguro?" }, method: :delete %></p>
-
+      Presiona el botón para cerrar tu cuenta <%= button_to "Cerrar mi cuenta", registration_path(resource_name), data: { confirm: "¿Está seguro que desea cerrar la cuenta? Puede volver a crearla cuando desee" }, method: :delete %>
+      
+      <br>
       <%= link_to "Atras", :back %>
 
     </div>
-  </div>
-</div>
+
