@@ -6,6 +6,7 @@
             <th>¿Turno disponible?: </th>
             <th>Vacunatorio: </th>
             <th>Direccion: </th>
+            <th>¿Asistió?: </th>
         </thead>
     </tr>
     <% @turnos.each do |t| %>
@@ -14,6 +15,7 @@
             <td><%= t.disponible %></td>
             <td><%= t.vaccination.nombre %></td>
             <td><%= t.vaccination.direccion %></td>
+            <td><%= t.asistio %></td>
             <td>
                 <%= link_to "Editar", editturno_path(t)%>
                 <%= link_to "Eliminar", t, method: :delete, data: { confirm: "¿Deseas eliminar este turno?"} %>

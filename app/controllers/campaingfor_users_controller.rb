@@ -17,7 +17,7 @@ class CampaingforUsersController < ApplicationController
   end
 
   def edit
-      @campaingfor_user = campaingfor_user.find(params[:id])
+      @campaingfor_user = CampaingforUser.find(params[:id])
   end
 
   def update

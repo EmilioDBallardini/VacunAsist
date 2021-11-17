@@ -1,0 +1,18 @@
+<%= form_for @vacuna do |f| %>
+
+    <div>
+        <%= f.label :vacuna %>
+        <%= f.text_field :vacuna%>
+    </div>
+    <div>
+        <%= f.label :lote %>
+        <%= f.text_field :lote %>
+    </div>
+    <div>
+        <%= f.label :cantidad %>
+        <%= f.number_field :cantidad %>
+    </div>
+    <div>
+        <%= f.submit %>
+    </div>
+<%end%>

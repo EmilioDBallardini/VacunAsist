@@ -1,0 +1,22 @@
+<h1>Listado de Vacunas disponibles</h1>
+<table>
+    <tr>
+        <thead>
+            <th>Vacuna: </th>
+            <th>Lote: </th>
+            <th>Cantidad: </th>
+        </thead>
+    </tr>
+    <% @vacunas.each do |v| %>
+        <tr>
+            <td><%= v.vacuna %></td>
+            <td><%= v.lote %></td>
+            <td><%= v.cantidad %></td>
+            <td>
+                <%= link_to "Editar", editvacuna_path(v)%>
+                <%= link_to "Eliminar", v, method: :delete, data: { confirm: "¿Deseas eliminar el registro de este vacunatorio?"} %>
+            </td>
+        </tr>
+            <% end %>
+</table>
+<%= link_to "Ingresar vacunas", vacunas_new_path%>

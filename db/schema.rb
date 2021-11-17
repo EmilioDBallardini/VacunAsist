@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_183152) do
+ActiveRecord::Schema.define(version: 2021_11_17_175816) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -22,7 +22,11 @@ ActiveRecord::Schema.define(version: 2021_11_16_183152) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "campaing_id", null: false
+    t.integer "turno_id"
+    t.integer "user_id"
     t.index ["campaing_id"], name: "index_campaingfor_users_on_campaing_id"
+    t.index ["turno_id"], name: "index_campaingfor_users_on_turno_id"
+    t.index ["user_id"], name: "index_campaingfor_users_on_user_id"
   end
 
   create_table "campaings", force: :cascade do |t|
@@ -51,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_183152) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "vaccination_id", null: false
+    t.boolean "asistio"
     t.index ["vaccination_id"], name: "index_turnos_on_vaccination_id"
   end
 
@@ -79,6 +84,16 @@ ActiveRecord::Schema.define(version: 2021_11_16_183152) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "vacunas", force: :cascade do |t|
+    t.text "vacuna"
+    t.text "lote"
+    t.integer "cantidad"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "campaingfor_users", "campaings"
+  add_foreign_key "campaingfor_users", "turnos"
+  add_foreign_key "campaingfor_users", "users"
   add_foreign_key "turnos", "vaccinations"
 end

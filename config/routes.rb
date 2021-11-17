@@ -58,4 +58,12 @@ Rails.application.routes.draw do
   get 'campaingfor_users/:id/edit', to: 'campaingfor_users#edit', as: 'editcampaingfor_users'
   patch 'campaingfor_users/:id', to: 'campaingfor_users#update'
   delete 'campaingfor_users/:id', to: 'campaingfor_users#destroy'
+
+  resources :vacunas
+  get 'vacunas', to: 'vacunas#index'
+  get 'vacunas/new', to: 'vacunas#new'
+  post 'vacunas', to: 'vacunas#create'
+  get 'vacunas/:id/edit', to: 'vacunas#edit', as: 'editvacuna'
+  patch 'vacunas/:id', to: 'vacunas#update'
+  delete 'vacunas/:id', to: 'vacunas#destroy'
 end
