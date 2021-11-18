@@ -37,6 +37,6 @@ class CampaingforUsersController < ApplicationController
 
   private
       def campaingfor_user_params
-          params.require(:campaingfor_user).permit(:campaing_id)
+          params.require(:campaingfor_user).permit(:campaingvaccine_id)
       end
 end

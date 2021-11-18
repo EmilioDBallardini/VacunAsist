@@ -5,6 +5,7 @@
             <th>Vacuna: </th>
             <th>Lote: </th>
             <th>Cantidad: </th>
+            <th>Vacunatorio: </th>
         </thead>
     </tr>
     <% @vacunas.each do |v| %>
@@ -12,6 +13,7 @@
             <td><%= v.vacuna %></td>
             <td><%= v.lote %></td>
             <td><%= v.cantidad %></td>
+            <td><%= v.vaccination.nombre %></td>
             <td>
                 <%= link_to "Editar", editvacuna_path(v)%>
                 <%= link_to "Eliminar", v, method: :delete, data: { confirm: "¿Deseas eliminar el registro de este vacunatorio?"} %>

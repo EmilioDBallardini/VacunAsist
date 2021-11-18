@@ -1,6 +1,4 @@
 class VacunasController < ApplicationController
-  after_save: crear turno
-
   def index
       @vacunas = Vacuna.all
   end
@@ -39,6 +37,6 @@ class VacunasController < ApplicationController
 
   private
       def vacuna_params
-          params.require(:vacuna).permit(:vacuna, :lote, :cantidad)
+          params.require(:vacuna).permit(:vacuna, :lote, :cantidad, :vaccination_id)
       end
 end

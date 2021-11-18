@@ -1,8 +1,12 @@
-<%= form_for @campaing do |f| %>
+<%= form_for @campaingvaccine do |f| %>
 
     <div>
         <%= f.label :name %>
         <%= f.text_field :name %>
+    </div>
+    <div>
+        <%=f.label "vacuna"%>
+        <%= f.select :vacuna_id, options_from_collection_for_select(Vacuna.all, :id, :vacuna) %>
     </div>
     <div>
         <%= f.label :incio %>
@@ -11,10 +15,6 @@
     <div>
         <%= f.label :fin %>
         <%= f.date_field :fin %>
-    </div>
-    <div>
-        <%=f.label "vacuna"%>
-        <%= f.select :vacuna_id, options_from_collection_for_select(Vacuna.all, :id, :vacuna) %>
     </div>
     <div>
         <%= f.submit %>

@@ -1,3 +1,3 @@
 class CampaingforUser < ApplicationRecord
-  belongs_to :campaing
+  belongs_to :campaingvaccine
 end

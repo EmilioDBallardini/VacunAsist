@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: 
-  inicio: 
+  name: MyText
+  inicio: 2021-11-18
   fin: 2021-11-18
 
 two:
-  name: 
-  inicio: 
+  name: MyText
+  inicio: 2021-11-18
   fin: 2021-11-18

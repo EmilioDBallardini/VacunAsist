@@ -13,6 +13,10 @@
         <%= f.number_field :cantidad %>
     </div>
     <div>
+        <%= f.label :vaccination_id %>
+        <%= f.select :vaccination_id, options_from_collection_for_select(Vaccination.all, :id, :nombre) %>
+    </div>
+    <div>
         <%= f.submit %>
     </div>
 <%end%>

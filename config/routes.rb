@@ -26,14 +26,13 @@ Rails.application.routes.draw do
   get "users/edit", to: "user#edit", as: 'useredit'
   get "users/show", to: "user#show", as: 'showperfil'
 
-
-  resources :campaings
-  get 'campaings', to: 'campaings#index'
-  get 'campaings/new', to: 'campaings#new'
-  post 'campaings', to: 'campaings#create'
-  get 'campaings/:id/edit', to: 'campaings#edit', as: 'editcampaing'
-  patch 'campaings/:id', to: 'campaings#update'
-  delete 'campaings/:id', to: 'campaings#destroy'
+  resources :campaingvaccines
+  get 'campaingvaccines', to: 'campaingvaccines#index'
+  get 'campaingvaccines/new', to: 'campaingvaccines#new'
+  post 'campaingvaccines', to: 'campaingvaccines#create'
+  get 'campaingvaccines/:id/edit', to: 'campaingvaccines#edit', as: 'editcampaingvaccines'
+  patch 'campaingvaccines/:id', to: 'campaingvaccines#update'
+  delete 'campaingvaccines/:id', to: 'campaingvaccines#destroy'
 
   resources :vaccinations
   get 'vaccinations', to: 'vaccinations#index'
