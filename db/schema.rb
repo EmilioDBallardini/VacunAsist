@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_11_18_194026) do
-=======
-ActiveRecord::Schema.define(version: 2021_11_17_175816) do
->>>>>>> bb76a57940dccd894e3717320f3b21eb6eb87e90
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -25,34 +21,21 @@ ActiveRecord::Schema.define(version: 2021_11_17_175816) do
   create_table "campaingfor_users", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
-    t.integer "turno_id"    add_reference :campaingvaccines,
+    t.integer "turno_id"
     t.integer "user_id"
     t.integer "campaingvaccine_id", null: false
     t.index ["campaingvaccine_id"], name: "index_campaingfor_users_on_campaingvaccine_id"
-=======
-    t.integer "campaing_id", null: false
-    t.integer "turno_id"
-    t.integer "user_id"
-    t.index ["campaing_id"], name: "index_campaingfor_users_on_campaing_id"
->>>>>>> bb76a57940dccd894e3717320f3b21eb6eb87e90
     t.index ["turno_id"], name: "index_campaingfor_users_on_turno_id"
     t.index ["user_id"], name: "index_campaingfor_users_on_user_id"
   end
 
   create_table "campaings", force: :cascade do |t|
     t.text "name"
-<<<<<<< HEAD
-=======
     t.text "vacuna"
->>>>>>> bb76a57940dccd894e3717320f3b21eb6eb87e90
     t.date "inicio"
     t.date "fin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
-    t.integer "vacuna_id", null: false
-    t.index ["vacuna_id"], name: "index_campaings_on_vacuna_id"
   end
 
   create_table "campaingvaccines", force: :cascade do |t|
@@ -63,8 +46,6 @@ ActiveRecord::Schema.define(version: 2021_11_17_175816) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "vacuna_id"
     t.index ["vacuna_id"], name: "index_campaingvaccines_on_vacuna_id"
-=======
->>>>>>> bb76a57940dccd894e3717320f3b21eb6eb87e90
   end
 
   create_table "noticia", force: :cascade do |t|
@@ -120,7 +101,6 @@ ActiveRecord::Schema.define(version: 2021_11_17_175816) do
     t.integer "cantidad"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
     t.integer "vaccination_id", null: false
     t.index ["vaccination_id"], name: "index_vacunas_on_vaccination_id"
   end
@@ -128,16 +108,7 @@ ActiveRecord::Schema.define(version: 2021_11_17_175816) do
   add_foreign_key "campaingfor_users", "campaingvaccines"
   add_foreign_key "campaingfor_users", "turnos"
   add_foreign_key "campaingfor_users", "users"
-  add_foreign_key "campaings", "vacunas"
   add_foreign_key "campaingvaccines", "vacunas"
   add_foreign_key "turnos", "vaccinations"
   add_foreign_key "vacunas", "vaccinations"
-=======
-  end
-
-  add_foreign_key "campaingfor_users", "campaings"
-  add_foreign_key "campaingfor_users", "turnos"
-  add_foreign_key "campaingfor_users", "users"
-  add_foreign_key "turnos", "vaccinations"
->>>>>>> bb76a57940dccd894e3717320f3b21eb6eb87e90
 end

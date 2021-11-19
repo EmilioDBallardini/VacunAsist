@@ -1,29 +1,67 @@
-
 <div class="container">
 
   <div class="row">
     <div class="col-m">
-      <h3>Hola <%= current_user.nombre %> <%= current_user.apellido %></h3> 
+      <h3>Hola <%= current_user.nombre %> <%= current_user.apellido %></h3>
     </div>
 
-    <div class="col-m"></div>
+    <% if (current_user.tipo == "Administrador")  %>
+  
+
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Cantidad de personas con edad mayor a 60:
+      </button>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Cantidad</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= User.where("nacimiento < ?", Time.zone.now - 60.years).count %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+    <br>
+
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Cantidad de personas con enfermedades prevalentes
+      </button>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Cantidad</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= User.where("enfermedad > 0").count %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
     <div class="row">
       <div class="col-m">
-        
       </div>
       <div class="col-m">
-
-        <%= render "noticium/index" %>  
-        
-      
-
-
-
+        <%= render "noticium/index" %>
+      </div>
     </div>
-  
   </div>
-
-</div>
-
-
-
