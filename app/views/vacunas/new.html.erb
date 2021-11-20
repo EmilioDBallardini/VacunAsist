@@ -1,0 +1,22 @@
+<%= form_for @vacuna do |f| %>
+
+    <div>
+        <%= f.label :vacuna %>
+        <%= f.text_field :vacuna%>
+    </div>
+    <div>
+        <%= f.label :lote %>
+        <%= f.text_field :lote %>
+    </div>
+    <div>
+        <%= f.label :cantidad %>
+        <%= f.number_field :cantidad %>
+    </div>
+    <div>
+        <%= f.label :vaccination_id %>
+        <%= f.select :vaccination_id, options_from_collection_for_select(Vaccination.all, :id, :nombre) %>
+    </div>
+    <div>
+        <%= f.submit %>
+    </div>
+<%end%>

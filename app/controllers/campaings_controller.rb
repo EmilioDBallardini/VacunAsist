@@ -1,6 +1,6 @@
 class CampaingsController < ApplicationController
     def index
-        @campaings = Campaing.all
+        @campaing = Campaing.all
     end
 
     def new
@@ -37,6 +37,6 @@ class CampaingsController < ApplicationController
 
     private
         def campaing_params
-            params.require(:campaing).permit(:name, :vacuna, :inicio, :fin)
+            params.require(:campaing).permit(:name, :inicio, :fin, :vacuna_id)
         end
 end

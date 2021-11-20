@@ -26,14 +26,13 @@ Rails.application.routes.draw do
   get "users/edit", to: "user#edit", as: 'useredit'
   get "users/show", to: "user#show", as: 'showperfil'
 
-
-  resources :campaings
-  get 'campaings', to: 'campaings#index'
-  get 'campaings/new', to: 'campaings#new'
-  post 'campaings', to: 'campaings#create'
-  get 'campaings/:id/edit', to: 'campaings#edit', as: 'editcampaing'
-  patch 'campaings/:id', to: 'campaings#update'
-  delete 'campaings/:id', to: 'campaings#destroy'
+  resources :campaingvaccines
+  get 'campaingvaccines', to: 'campaingvaccines#index'
+  get 'campaingvaccines/new', to: 'campaingvaccines#new'
+  post 'campaingvaccines', to: 'campaingvaccines#create'
+  get 'campaingvaccines/:id/edit', to: 'campaingvaccines#edit', as: 'editcampaingvaccines'
+  patch 'campaingvaccines/:id', to: 'campaingvaccines#update'
+  delete 'campaingvaccines/:id', to: 'campaingvaccines#destroy'
 
   resources :vaccinations
   get 'vaccinations', to: 'vaccinations#index'
@@ -58,4 +57,12 @@ Rails.application.routes.draw do
   get 'campaingfor_users/:id/edit', to: 'campaingfor_users#edit', as: 'editcampaingfor_users'
   patch 'campaingfor_users/:id', to: 'campaingfor_users#update'
   delete 'campaingfor_users/:id', to: 'campaingfor_users#destroy'
+
+  resources :vacunas
+  get 'vacunas', to: 'vacunas#index'
+  get 'vacunas/new', to: 'vacunas#new'
+  post 'vacunas', to: 'vacunas#create'
+  get 'vacunas/:id/edit', to: 'vacunas#edit', as: 'editvacuna'
+  patch 'vacunas/:id', to: 'vacunas#update'
+  delete 'vacunas/:id', to: 'vacunas#destroy'
 end

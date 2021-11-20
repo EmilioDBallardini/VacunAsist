@@ -8,12 +8,13 @@ class TurnosController < ApplicationController
     end
 
     def create
-        @turno = Turno.new(turno_params)
-            if @turno.save
-                redirect_to turnos_path
-            else
-                render :new
-            end
+        #@turno = Turno.new(turno_params)
+            #if @turno.save
+                #redirect_to turnos_path
+            #else
+                #render :new
+            #end
+        @turno = Turno.create(params.require(:turno).permit(:Fecha_hora, :disponible, :vaccination_id))
     end
 
     def edit

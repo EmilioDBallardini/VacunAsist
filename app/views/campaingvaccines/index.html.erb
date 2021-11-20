@@ -8,17 +8,17 @@
             <th>Fin: </th>
         </thead>
     </tr>
-    <% @campaing.each do |c| %>
+    <% @campaingvaccines.each do |c| %>
         <tr>
             <td><%= c.name %></td>
-            <td><%= c.vacunas.vacuna %></td>
+            <td><%= c.vacuna.vacuna %></td>
             <td><%= c.inicio %></td>
             <td><%= c.fin %></td>
             <td>
-                <%= link_to "Editar", editcampaing_path(c)%>
+                <%= link_to "Editar", editcampaingvaccines_path(c)%>
                 <%= link_to "Eliminar", c, method: :delete, data: { confirm: "¿Deseas eliminar esta campaña?"} %>
             </td>
         </tr>
             <% end %>
 </table>
-<%= link_to "Crear campaña", campaings_new_path%>
+<%= link_to "Crear campaña", campaingvaccines_new_path%>

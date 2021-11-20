@@ -4,6 +4,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: '127.0.0.1', port: 3000 }
 
+  config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'no-reply@example.com'}
@@ -80,4 +81,18 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => '96dfad5d6e361b',
+    :password => '5742f47cbc23fa',
+    :address => 'smtp.mailtrap.io',
+    :domain => 'smtp.mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
+  }
+
+  config.action_mailer.default_url_options = {:host =>'localhost:3000'}
 end
