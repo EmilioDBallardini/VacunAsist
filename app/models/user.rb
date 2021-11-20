@@ -6,5 +6,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :usercampaings
+  # has_many :usercampaings
+  has_many :campaing, through: :campaingfor_user
+  has_many :campaingfor_users
 end

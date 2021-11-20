@@ -9,8 +9,9 @@ class CampaingforUsersController < ApplicationController
 
   def create
       @campaingfor_user = CampaingforUser.new(campaingfor_user_params)
+      @campaingfor_user.user_id = current_user.id
           if @campaingfor_user.save
-              redirect_to campaingfor_users_path
+              redirect_to campaingfor_users_path        #deberia redirect to Mensaje de ok
           else
               render :new
           end
