@@ -65,4 +65,12 @@ Rails.application.routes.draw do
   get 'vacunas/:id/edit', to: 'vacunas#edit', as: 'editvacuna'
   patch 'vacunas/:id', to: 'vacunas#update'
   delete 'vacunas/:id', to: 'vacunas#destroy'
+
+  resources :tipo_vacunas
+  get 'tipo_vacunas', to: 'tipo_vacunas#index'
+  get 'tipo_vacunas/new', to: 'tipo_vacunas#new'
+  post 'tipo_vacunas', to: 'tipo_vacunas#create'
+  get 'tipo_vacunas/:id/edit', to: 'vtipo_acunas#edit', as: 'edittipo_vacuna'
+  patch 'tipo_vacunas/:id', to: 'tipo_vacunas#update'
+  delete 'tipo_vacunas/:id', to: 'tipo_vacunas#destroy'
 end

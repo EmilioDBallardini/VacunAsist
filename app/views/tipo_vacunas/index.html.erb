@@ -1,0 +1,18 @@
+<h1>Listado de Vacunas</h1>
+<table>
+    <tr>
+        <thead>
+            <th>Vacuna: </th>
+        </thead>
+    </tr>
+    <% @tipo_vacunas.each do |v| %>
+        <tr>
+            <td><%= v.nombre %></td>
+            <td>
+                <%= link_to "Editar", edittipo_vacuna_path(v)%>
+                <%= link_to "Eliminar", v, method: :delete, data: { confirm: "¿Deseas eliminar este tipo de vacuna?"} %>
+            </td>
+        </tr>
+            <% end %>
+</table>
+<%= link_to "Ingresar tipo de vacunas", tipo_vacunas_new_path%>

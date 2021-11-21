@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2021_11_19_182238) do
-=======
-ActiveRecord::Schema.define(version: 2021_11_18_194026) do
->>>>>>> 0709e41fe1452fb699180fed0a4698cb86afaae2
+ActiveRecord::Schema.define(version: 2021_11_21_000330) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -25,27 +21,12 @@ ActiveRecord::Schema.define(version: 2021_11_18_194026) do
   create_table "campaingfor_users", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
-    t.integer "campaing_id", null: false
-    t.integer "user_id"
-    t.index ["campaing_id"], name: "index_campaingfor_users_on_campaing_id"
-=======
     t.integer "turno_id"
-    t.integer "user_id"
     t.integer "campaingvaccine_id", null: false
+    t.integer "user_id", null: false
     t.index ["campaingvaccine_id"], name: "index_campaingfor_users_on_campaingvaccine_id"
     t.index ["turno_id"], name: "index_campaingfor_users_on_turno_id"
     t.index ["user_id"], name: "index_campaingfor_users_on_user_id"
->>>>>>> 0709e41fe1452fb699180fed0a4698cb86afaae2
-  end
-
-  create_table "campaings", force: :cascade do |t|
-    t.text "name"
-    t.text "vacuna"
-    t.date "inicio"
-    t.date "fin"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "campaingvaccines", force: :cascade do |t|
@@ -69,13 +50,18 @@ ActiveRecord::Schema.define(version: 2021_11_18_194026) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "tipo_vacunas", force: :cascade do |t|
+    t.text "nombre"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "turnos", force: :cascade do |t|
     t.datetime "Fecha_hora"
     t.boolean "disponible"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "vaccination_id", null: false
-    t.boolean "asistio"
     t.index ["vaccination_id"], name: "index_turnos_on_vaccination_id"
   end
 
@@ -106,12 +92,14 @@ ActiveRecord::Schema.define(version: 2021_11_18_194026) do
   end
 
   create_table "vacunas", force: :cascade do |t|
-    t.text "vacuna"
     t.text "lote"
     t.integer "cantidad"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "vaccination_id", null: false
+    t.integer "tipo_vacuna_id", null: false
+    t.text "nombre"
+    t.index ["tipo_vacuna_id"], name: "index_vacunas_on_tipo_vacuna_id"
     t.index ["vaccination_id"], name: "index_vacunas_on_vaccination_id"
   end
 
@@ -120,5 +108,6 @@ ActiveRecord::Schema.define(version: 2021_11_18_194026) do
   add_foreign_key "campaingfor_users", "users"
   add_foreign_key "campaingvaccines", "vacunas"
   add_foreign_key "turnos", "vaccinations"
+  add_foreign_key "vacunas", "tipo_vacunas"
   add_foreign_key "vacunas", "vaccinations"
 end

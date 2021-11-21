@@ -9,6 +9,7 @@ class VacunasController < ApplicationController
 
   def create
       @vacuna = Vacuna.new(vacuna_params)
+      @vacuna.nombre = @vacuna.tipo_vacuna.nombre
           if @vacuna.save
               redirect_to vacunas_path
           else
@@ -37,6 +38,6 @@ class VacunasController < ApplicationController
 
   private
       def vacuna_params
-          params.require(:vacuna).permit(:vacuna, :lote, :cantidad, :vaccination_id)
+          params.require(:vacuna).permit(:tipo_vacuna_id, :lote, :cantidad, :vaccination_id)
       end
 end

@@ -14,7 +14,7 @@
     </div>
     <div>
         <%= f.label :vacuna_id %>
-        <%= f.select :vacuna_id, options_from_collection_for_select(Vacuna.all, :id, :vacuna) %>
+        <%= f.select :vacuna_id, options_from_collection_for_select(Vacuna.all, :id, :nombre) %>
     </div>
     <div>
         <%= f.submit %>
