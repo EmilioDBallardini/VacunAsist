@@ -25,5 +25,7 @@
         </tr>
         <% end %>
     </table>
-    <%= link_to "Ingresar turno nuevo", turnos_new_path%>
+    <% if current_user.tipo == "Administrador" %>
+        <%= link_to "Ingresar turno nuevo", turnos_new_path%>
+    <% end %>
 </div>

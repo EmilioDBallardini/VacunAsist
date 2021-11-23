@@ -5,12 +5,8 @@
             <tr>
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <th>Edad</th>
-                <th>DNI</th>
-                <th>¿Enfermedades?</th>
                 <th>email</th>
-                <th>Tipo de usuario</th>
-                
+                <th>Mas información</th>
             </tr>
         </thead>
         <tbody>
@@ -18,17 +14,10 @@
             <tr>
                 <td><%= u.nombre %></td>
                 <td><%= u.apellido %></td>
-                <td><%= Time.zone.now - u.nacimiento.year%></td>
-                <td><%= u.dni %></td>
-                <% if u.enfermedad %>
-                <td> Si </td>
-                <%else%>
-                <td> No </td>
-                <%end%>
                 <td><%= u.email %></td>
-                <td><%= u.tipo %></td>
                 <td><%= link_to "Ver turnos", turnos_path, class: 'btn btn-info btn-sm' %> </td>
-            <%end%>
+                <td><%= link_to "Ver más", showperfil_path(u.id), class: 'btn btn-info btn-sm' %> </td>
+                <%end%>
             </tr>
         </tbody>
     </table>

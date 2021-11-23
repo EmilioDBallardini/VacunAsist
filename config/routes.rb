@@ -2,6 +2,11 @@
 
 Rails.application.routes.draw do
 
+  resources :user
+  get "users/:id/edit", to: "user#edit", as: 'useredit'
+  get "users/:id/show", to: "user#show", as: 'showperfil'
+
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -12,8 +17,6 @@ Rails.application.routes.draw do
     noticium: 'noticium/noticium'
   }
 
-
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get "bienvenida", to: "home#index"
 
@@ -22,9 +25,6 @@ Rails.application.routes.draw do
   resources :noticium
   post "noticium/new", to: "noticium#new"
 
-  resources :user
-  get "users/edit", to: "user#edit", as: 'useredit'
-  get "users/show", to: "user#show", as: 'showperfil'
 
   resources :campaingvaccines
   get 'campaingvaccines', to: 'campaingvaccines#index'
