@@ -18,7 +18,7 @@
                 <% @usuarios.each do |u| %>
                     <%= u.nombre %>
                     <%= u.apellido %>
-                    <%= (Time.zone.now - u.nacimiento.years)  %>
+                    <%= Time.zone.now - u.nacimiento.years  %>
                     <%= u.dni %>
                     <%= u.enfermedades %>
                     <%= u.email %>

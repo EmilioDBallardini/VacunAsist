@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2021_11_19_182238) do
-=======
 ActiveRecord::Schema.define(version: 2021_11_18_194026) do
->>>>>>> 0709e41fe1452fb699180fed0a4698cb86afaae2
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -25,18 +21,12 @@ ActiveRecord::Schema.define(version: 2021_11_18_194026) do
   create_table "campaingfor_users", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
-    t.integer "campaing_id", null: false
-    t.integer "user_id"
-    t.index ["campaing_id"], name: "index_campaingfor_users_on_campaing_id"
-=======
     t.integer "turno_id"
     t.integer "user_id"
     t.integer "campaingvaccine_id", null: false
     t.index ["campaingvaccine_id"], name: "index_campaingfor_users_on_campaingvaccine_id"
     t.index ["turno_id"], name: "index_campaingfor_users_on_turno_id"
     t.index ["user_id"], name: "index_campaingfor_users_on_user_id"
->>>>>>> 0709e41fe1452fb699180fed0a4698cb86afaae2
   end
 
   create_table "campaings", force: :cascade do |t|

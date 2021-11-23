@@ -64,4 +64,16 @@
         <%= render "noticium/index" %>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-m">
+      <%= link_to "Ver listado de usuarios", user_index_path, class: 'btn btn-info btn-sm' %><br />   
+      </div>
+      <div class="col-m">
+        <%= render "user/paciente/turnos" %>
+      </div>
+    </div>
+
+    
+
   </div>

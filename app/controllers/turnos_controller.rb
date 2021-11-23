@@ -7,6 +7,11 @@ class TurnosController < ApplicationController
         @turno = Turno.new
     end
 
+    def show
+        @turno = Turno.find(params[:id])
+    end
+    
+
     def create
         #@turno = Turno.new(turno_params)
             #if @turno.save

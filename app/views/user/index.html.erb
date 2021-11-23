@@ -1,25 +1,36 @@
-<div class = "container">
+<div class="container">
     <h3>Listado de personas</h3>
-    <table class = "table table-hover">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Edad</th>
                 <th>DNI</th>
-                <th>Domicilio</th>
+                <th>¿Enfermedades?</th>
                 <th>email</th>
+                <th>Tipo de usuario</th>
+                
             </tr>
         </thead>
-        
-        <tr>
-            <td>
-                <th>
-                esto falta rellenarlo, pero luego lo hago a la noche
-                </th>
-            </td>
-        </tr>
-
+        <tbody>
+            <% @usuarios.each do |u| %>
+            <tr>
+                <td><%= u.nombre %></td>
+                <td><%= u.apellido %></td>
+                <td><%= Time.zone.now - u.nacimiento.year%></td>
+                <td><%= u.dni %></td>
+                <% if u.enfermedad %>
+                <td> Si </td>
+                <%else%>
+                <td> No </td>
+                <%end%>
+                <td><%= u.email %></td>
+                <td><%= u.tipo %></td>
+                <td><%= link_to "Ver turnos", turnos_path, class: 'btn btn-info btn-sm' %> </td>
+            <%end%>
+            </tr>
+        </tbody>
     </table>
 
 </div>
