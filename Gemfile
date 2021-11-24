@@ -62,3 +62,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'      # gema para modulo de autenticacion
 
 gem 'hirb'        # Gema para ver las tablas mas presentables
+
+gem 'activerecord-import'   #Gema para importar varios registros en una tabla.
