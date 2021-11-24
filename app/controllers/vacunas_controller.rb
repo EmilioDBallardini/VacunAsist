@@ -11,7 +11,7 @@ class VacunasController < ApplicationController
       @vacuna = Vacuna.new(vacuna_params)
       @vacuna.nombre = @vacuna.tipo_vacuna.nombre
           if @vacuna.save
-              redirect_to vacunas_path
+            redirect_to turnos_new_path
           else
               render :new
           end

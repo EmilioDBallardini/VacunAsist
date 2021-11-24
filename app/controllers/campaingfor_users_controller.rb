@@ -7,6 +7,10 @@ class CampaingforUsersController < ApplicationController
       @campaingfor_user = CampaingforUser.new
   end
 
+  def show
+    @campaingfor_user= CampaingforUser.find(params[:id])
+  end
+
   def create
       @campaingfor_user = CampaingforUser.new(campaingfor_user_params)
       @campaingfor_user.user_id = current_user.id
@@ -38,6 +42,6 @@ class CampaingforUsersController < ApplicationController
 
   private
       def campaingfor_user_params
-          params.require(:campaingfor_user).permit(:campaingvaccine_id)
+          params.require(:campaingfor_user).permit(:campaingvaccine_id, :user_id)
       end
 end

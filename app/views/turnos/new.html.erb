@@ -1,13 +1,4 @@
 <%= form_for @turno do |f| %>
-
-    <div>
-        <%= f.label :Fecha_hora %>
-        <%= f.datetime_field :Fecha_hora%>
-    </div>
-    <div>
-        <%= f.label :disponible %>
-        <%= f.check_box :disponible %>
-    </div>
     <div>
         <%= f.label :vaccination_id %>
         <%= f.select :vaccination_id, options_from_collection_for_select(Vaccination.all, :id, :nombre) %>

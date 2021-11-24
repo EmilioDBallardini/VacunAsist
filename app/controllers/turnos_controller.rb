@@ -9,11 +9,25 @@ class TurnosController < ApplicationController
 
     def create
         @turno = Turno.new(turno_params)
-            if @turno.save
-                redirect_to turnos_path
-            else
-                render :new
-            end
+      #  age = Date.today.year - current_user.nacimiento.year
+      #  age -= 1 if Date.today < current_user.nacimiento + age.years
+      #  if age>60
+          #@turno.Fecha_hora = (DateTime.now+1).days+(8.hours)
+          #@turno.disponible = false
+          turnos = []
+          for i in 1..10
+            turnos.push(1)
+            puts "turnos #{i}"
+          end
+          10.times do |i|
+          turnos << Turno.new(:vaccination_id => "turnos #{i}")
+          end
+          Turno.import turnos
+        if @turno.save
+            redirect_to turnos_path
+        else
+            render :new
+        end
     end
 
     def edit
@@ -37,6 +51,7 @@ class TurnosController < ApplicationController
 
     private
         def turno_params
-            params.require(:turno).permit(:Fecha_hora, :disponible, :vaccination_id)
+            #params.require(:turno).permit(:Fecha_hora, :disponible, :vaccination_id)
+            params.require(:turno).permit(:vaccination_id)
         end
 end

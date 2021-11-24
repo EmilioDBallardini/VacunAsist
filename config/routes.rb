@@ -55,6 +55,7 @@ Rails.application.routes.draw do
   get 'campaingfor_users/new', to: 'campaingfor_users#new'
   post 'campaingfor_users', to: 'campaingfor_users#create'
   get 'campaingfor_users/:id/edit', to: 'campaingfor_users#edit', as: 'editcampaingfor_users'
+  #get "campaingfor_users/:id/show", to: "campaingfor_users#show", as: 'showcampaingfor_user'
   patch 'campaingfor_users/:id', to: 'campaingfor_users#update'
   delete 'campaingfor_users/:id', to: 'campaingfor_users#destroy'
 
