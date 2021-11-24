@@ -6,62 +6,77 @@
     </div>
 
     <% if (current_user.tipo == "Administrador")  %>
-  
 
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Cantidad de personas con edad mayor a 60:
-      </button>
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Cantidad</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <%= User.where("nacimiento < ?", Time.zone.now - 60.years).count %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Cantidad de personas con edad mayor a 60:
+    </button>
 
-            </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cantidad</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= User.where("nacimiento < ?", Time.zone.now - 60.years).count %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
           </div>
         </div>
       </div>
+    </div>
 
-    
+
     <br>
 
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Cantidad de personas con enfermedades prevalentes
-      </button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Cantidad de personas con enfermedades prevalentes
+    </button>
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Cantidad</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <%= User.where("enfermedad > 0").count %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cantidad</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= User.where("enfermedad > 0").count %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-            </div>
           </div>
         </div>
       </div>
+    </div>
 
     <% end %>
 
     <div class="row">
-      <div class="col-m">
-      </div>
-      <div class="col-m">
+      <div class="col">
         <%= render "noticium/index" %>
       </div>
+      <div class="col">
+      </div>
+      <div class="col">
+        <%= render "user/paciente/turnos" %>
+      </div>
     </div>
+
+
+    <% if (current_user.tipo == "Administrador")  %>
+    <div class="row">
+      <div class="col-m">
+        <%= link_to "Ver listado de usuarios", user_index_path, class: 'btn btn-info btn-sm' %><br />
+      </div>
+
+    </div>
+    <% end %>
+
+
   </div>

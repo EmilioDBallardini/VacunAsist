@@ -5,8 +5,10 @@
             <tr>
                 <th>Nombre</th>
                 <th>Apellido</th>
+                <th>Edad</th>
+                <th>DNI</th>
+                <th>Enfermedades prevalentes</th>
                 <th>email</th>
-                <th>Mas información</th>
             </tr>
         </thead>
         
@@ -16,8 +18,10 @@
                 <% @usuarios.each do |u| %>
                     <%= u.nombre %>
                     <%= u.apellido %>
+                    <%= Time.zone.now - u.nacimiento.years  %>
+                    <%= u.dni %>
+                    <%= u.enfermedades %>
                     <%= u.email %>
-                    
                 <%end%>
                 </th>
             </td>

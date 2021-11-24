@@ -1,0 +1,52 @@
+
+      <h2></h2>
+
+      <%= form_for @usuario do |f| %>
+        
+        <div class="row">
+          <div class="col">
+              <div class="field">
+                <label for="inputName" class="form-label">Nombre</label><br />
+                <input type="nombre" id="inputName" value="<%=@usuario.nombre%>" readonly> 
+             </div>
+              <p>
+             <div class="field">
+               <%= f.label :email, "Correo electrónico"%><br />
+               <%= f.email_field :email, autocomplete: "email"%>
+             </div>
+           </div>
+
+          <div class="col">
+            <div class="field">
+              <%= f.label :apellido, "Apellido/s"%><br />
+              <%= f.text_field :apellido, autocomplete: "apellido" %>
+            </div>
+            <p>
+            <div class="field">
+              <%= f.label :dni, "DNI" %><br />
+               <%= f.text_field :dni, autofocus: true, autocomplete: "dni" %>
+             </div>
+          </div>
+          
+          <div class="col">
+            <div class="field">
+              <%= f.label :nacimiento, "Fecha de nacimiento" %><br />
+              <%= f.date_field :nacimiento, autofocus: true, autocomplete: "nacimiento" %>
+            </div>
+            <p>
+            <% if @usuario.enfermedad? %>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                  <label class="form-check-label" for="flexCheckDefault">Padezco enfermedades prevalentes</label>
+                </div>
+                <% else %>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">Padezco enfermedades prevalentes</label>
+                  </div>
+            <%end%>
+          </div>
+        </div>
+      <%end%>
+
+      <%= link_to "Editar datos", edit_user_registration_path%>

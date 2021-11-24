@@ -1,18 +1,20 @@
 class UserController < ApplicationController
     before_action :authenticate_user!
+
+
+    def new
+        @user = User.new
+    end
+
     def index
         @usuarios=User.all
     end
 
     def show
-        @usuario=current_user
+        @usuario = User.find(params[:id])
     end
 
-    def update
-
-    end
-
-    def edit
+    def edit    
         @usuario = User.find(params[:id])
     end
 
@@ -29,4 +31,4 @@ class UserController < ApplicationController
         def user_params
             params.requiere(:user).permit(:nombre, :apellido, :email, :contraseña, :nacimiento)
         end
-end
+end 

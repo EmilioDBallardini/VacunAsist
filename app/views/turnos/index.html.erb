@@ -1,24 +1,31 @@
-<h1>Listado de Turnos disponibles</h1>
-<table>
-    <tr>
-        <thead>
-            <th>Fecha y hora: </th>
-            <th>¿Turno disponible?: </th>
-            <th>Vacunatorio: </th>
-            <th>Direccion: </th>
-        </thead>
-    </tr>
-    <% @turnos.each do |t| %>
+<div class="container">
+    <h3>Listado de Turnos disponibles</h3>
+    <table class="table table-hover">
         <tr>
-            <td><%= t.Fecha_hora %></td>
-            <td><%= t.disponible %></td>
-            <td><%= t.vaccination.nombre %></td>
-            <td><%= t.vaccination.direccion %></td>
-            <td>
-                <%= link_to "Editar", editturno_path(t)%>
-                <%= link_to "Eliminar", t, method: :delete, data: { confirm: "¿Deseas eliminar este turno?"} %>
-            </td>
+            <thead>
+                <th>Fecha y hora: </th>
+                <th>¿Turno disponible?: </th>
+                <th>Vacunatorio: </th>
+                <th>Direccion: </th>
+                <th>¿Asistió?: </th>
+            </thead>
         </tr>
-            <% end %>
-</table>
-<%= link_to "Ingresar turno nuevo", turnos_new_path%>
+        <% @turnos.each do |t| %>
+        <tr>
+            <td>
+            <th><%= t.Fecha_hora %></th>
+            <th><%= t.disponible %></th>
+            <th><%= t.vaccination.nombre %></th>
+            <th><%= t.vaccination.direccion %></th>
+            <th><%= t.asistio %></th>
+            <th>
+                <%= link_to "Editar", editturno_path(t)%>
+                <%= link_to "Eliminar", t, method: :delete, data: { confirm: "¿Deseas eliminar este turno?"} %> </td>
+                </td>
+        </tr>
+        <% end %>
+    </table>
+    <% if current_user.tipo == "Administrador" %>
+        <%= link_to "Ingresar turno nuevo", turnos_new_path%>
+    <% end %>
+</div>
