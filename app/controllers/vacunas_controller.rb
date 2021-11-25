@@ -5,7 +5,7 @@ class VacunasController < ApplicationController
 
     def show
         @vacuna = Vacuna.find(params[:id])
-    end    
+    end
 
 
   def new
@@ -16,7 +16,7 @@ class VacunasController < ApplicationController
       @vacuna = Vacuna.new(vacuna_params)
       @vacuna.nombre = @vacuna.tipo_vacuna.nombre
           if @vacuna.save
-            redirect_to turnos_new_path
+            redirect_to turnos_new_path(cant: @vacuna.cantidad, vacid: @vacuna.vaccination_id)
           else
               render :new
           end

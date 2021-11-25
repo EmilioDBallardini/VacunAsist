@@ -13,7 +13,7 @@ class TurnosController < ApplicationController
 
 
     def create
-          c=530
+        c=Vacuna.pluck("cantidad").last
           turnos = []
           fact=DateTime.now.to_date
           fact=fact+8.hours
@@ -21,7 +21,7 @@ class TurnosController < ApplicationController
           while(c>0)
             if (fact.strftime("%u")>"7")||(fact.strftime("%u")<"6")
               if((fact.strftime("%H")>="08")&&(fact.strftime("%H")<"20"))
-                turnos.push({Fecha_hora:(fact).strftime("%Y%m%d %H:%M"), disponible:"true", vaccination_id:"2", asistio:"false"})
+                turnos.push({Fecha_hora:(fact).strftime("%Y%m%d %H:%M"), disponible:"true", vaccination_id:Vacuna.pluck("vaccination_id").last, asistio:"false"})
                 c=c-1
                 fact=fact+10.minutes
               else
@@ -60,7 +60,6 @@ class TurnosController < ApplicationController
 
     private
         def turno_params
-            #params.require(:turno).permit(:Fecha_hora, :disponible, :vaccination_id)
-            params.require(:turno).permit(:vaccination_id)
+            params.require(:turno).permit(:Fecha_hora, :disponible, :vaccination_id)
         end
 end
