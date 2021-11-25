@@ -10,29 +10,57 @@ class TurnosController < ApplicationController
     def show
         @turno = Turno.find(params[:id])
     end
-    
+
 
     def create
-        @turno = Turno.new(turno_params)
-      #  age = Date.today.year - current_user.nacimiento.year
-      #  age -= 1 if Date.today < current_user.nacimiento + age.years
-      #  if age>60
-          #@turno.Fecha_hora = (DateTime.now+1).days+(8.hours)
-          #@turno.disponible = false
+        @vacun=Vacuna.last
+        c=@vacun.cantidad
+        d=@vacun.cantidad
           turnos = []
-          for i in 1..10
-            turnos.push(1)
-            puts "turnos #{i}"
+          fact=DateTime.now.to_date
+          fact=fact+8.hours
+          fact=fact+1.day
+          while(c>0)
+            if (fact.strftime("%u")>"7")||(fact.strftime("%u")<"6")
+              if((fact.strftime("%H")>="08")&&(fact.strftime("%H")<"20"))
+                turnos.push({Fecha_hora:(fact).strftime("%Y%m%d %H:%M"), disponible:"true", vaccination_id: @vacun.vaccination_id, asistio:"false"})
+                c=c-1
+                fact=fact+10.minutes
+              else
+                fact=fact+1.day
+                fact=fact.to_date
+                fact=fact+8.hours
+              end
+            else
+              fact=fact.to_date
+              fact=fact+8.hours
+              fact=fact+1.day
+            end
           end
-          10.times do |i|
-          turnos << Turno.new(:vaccination_id => "turnos #{i}")
+          Turno.create(turnos)
+          us_prior=User.where("espera=1")
+          us_prior.sort_by(&:updated_at)
+          us_notprior=User.where("espera=0")
+          us_notprior.sort_by(&:updated_at)
+
+
+          if(d>us_prior.length)
+            while(d!=us_prior.length)
+                @t=Turno.where("disponible=true").first
+                  idcamp=Campaingvaccine.where(vacuna_id:@vacun.id).pluck("id")
+                  CampaingforUser.find(idcamp)
+                else
+                  current_user.espera=1
+                  current_user.save
+                end
+              else
+                current_user.espera=0
+                current_user.save
+              end
           end
-          Turno.import turnos
-        if @turno.save
-            redirect_to turnos_path
-        else
-            render :new
-        end
+
+
+          redirect_to turnos_path
     end
 
     def edit
@@ -56,7 +84,6 @@ class TurnosController < ApplicationController
 
     private
         def turno_params
-            #params.require(:turno).permit(:Fecha_hora, :disponible, :vaccination_id)
-            params.require(:turno).permit(:vaccination_id)
+            params.require(:turno).permit(:Fecha_hora, :disponible, :vaccination_id, :asistio)
         end
 end
