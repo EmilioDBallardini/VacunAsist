@@ -1,18 +1,23 @@
-<%= form_for @turno do |f| %>
+<form>
+<div class="container">
 
-    <div>
-        <%= f.label :Fecha_hora %>
-        <%= f.datetime_field :Fecha_hora%>
+<%= form_for @turno do |f| %>
+    <div class ="field">
+        <label class="form-label"><%= f.label :vaccination_id %></label>
+        <select class="form-select">
+        <option selected>Elija el turno? Vacuna?</option><%= f.select :vaccination_id, options_from_collection_for_select(Vaccination.all, :id, :nombre) %>
+        
+        </select>
     </div>
-    <div>
-        <%= f.label :disponible %>
-        <%= f.check_box :disponible %>
-    </div>
-    <div>
-        <%= f.label :vaccination_id %>
-        <%= f.select :vaccination_id, options_from_collection_for_select(Vaccination.all, :id, :nombre) %>
-    </div>
-    <div>
+    <div class="actions">
         <%= f.submit %>
+    <div>
+        <%= f.label "Por favor, confirme la creación de turnos automáticos"%>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Crear turnos</button>
     </div>
 <%end%>
+
+</div>
+</form>

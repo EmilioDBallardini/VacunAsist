@@ -19,7 +19,7 @@ class UserController < ApplicationController
     end
 
     def edit
-        #@usuario = User.find(params[:id])
+        @usuario = User.find(params[:id])
     end
 
     def update
@@ -54,7 +54,7 @@ class UserController < ApplicationController
         end
     end
 
-    # El admin busca por dni al usuario ya registrado y le asigna rol de vacunador
+
     def createvacun
         puts "#{params}>>>>>>>>>>>>>"
         @usuario = User.new

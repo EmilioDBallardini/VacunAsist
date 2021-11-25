@@ -1,0 +1,22 @@
+<div class = "container">
+   <div class = "table">
+        <thead>
+            <tr>
+                <th>Fecha y hora: </th>
+                <th>¿Turno disponible?: </th>
+                <th>Vacunatorio: </th>
+                <th>Direccion: </th>
+                <th>¿Asistió?: </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= @turno.Fecha_hora%></td>
+                <td><%= @turno.disponible%></td>
+                <td><%= @turno.vacunatorio%></td>
+                <td><%= @turno.direccion%></td>
+                <td><%= @turno.asistio%></td>
+            </tr>
+        </tbody>
+   </div>
+</div>

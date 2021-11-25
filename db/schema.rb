@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_11_20_184655) do
+=======
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 2021_11_21_000330) do
+=======
+ActiveRecord::Schema.define(version: 2021_11_25_145057) do
+>>>>>>> 79f0774edf860e4c73667d81fa8600baeb087454
+>>>>>>> 7cd19f2fd3c6b2eaa6b02d412095f21dfbf18172
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -22,11 +30,13 @@ ActiveRecord::Schema.define(version: 2021_11_20_184655) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "turno_id"
-    t.integer "user_id"
     t.integer "campaingvaccine_id", null: false
+    t.integer "user_id", null: false
+    t.integer "vaccination_id", null: false
     t.index ["campaingvaccine_id"], name: "index_campaingfor_users_on_campaingvaccine_id"
     t.index ["turno_id"], name: "index_campaingfor_users_on_turno_id"
     t.index ["user_id"], name: "index_campaingfor_users_on_user_id"
+<<<<<<< HEAD
   end
 
   create_table "campaings", force: :cascade do |t|
@@ -36,6 +46,9 @@ ActiveRecord::Schema.define(version: 2021_11_20_184655) do
     t.date "fin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+=======
+    t.index ["vaccination_id"], name: "index_campaingfor_users_on_vaccination_id"
+>>>>>>> 7cd19f2fd3c6b2eaa6b02d412095f21dfbf18172
   end
 
   create_table "campaingvaccines", force: :cascade do |t|
@@ -55,6 +68,12 @@ ActiveRecord::Schema.define(version: 2021_11_20_184655) do
     t.string "epigrafe"
     t.string "titulo"
     t.string "subtitulo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tipo_vacunas", force: :cascade do |t|
+    t.text "nombre"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -82,7 +101,11 @@ ActiveRecord::Schema.define(version: 2021_11_20_184655) do
     t.string "nombre"
     t.string "apellido"
     t.boolean "enfermedad"
+<<<<<<< HEAD
     t.integer "role"
+=======
+    t.integer "espera"
+>>>>>>> 7cd19f2fd3c6b2eaa6b02d412095f21dfbf18172
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -96,19 +119,23 @@ ActiveRecord::Schema.define(version: 2021_11_20_184655) do
   end
 
   create_table "vacunas", force: :cascade do |t|
-    t.text "vacuna"
     t.text "lote"
     t.integer "cantidad"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "vaccination_id", null: false
+    t.integer "tipo_vacuna_id", null: false
+    t.text "nombre"
+    t.index ["tipo_vacuna_id"], name: "index_vacunas_on_tipo_vacuna_id"
     t.index ["vaccination_id"], name: "index_vacunas_on_vaccination_id"
   end
 
   add_foreign_key "campaingfor_users", "campaingvaccines"
   add_foreign_key "campaingfor_users", "turnos"
   add_foreign_key "campaingfor_users", "users"
+  add_foreign_key "campaingfor_users", "vaccinations"
   add_foreign_key "campaingvaccines", "vacunas"
   add_foreign_key "turnos", "vaccinations"
+  add_foreign_key "vacunas", "tipo_vacunas"
   add_foreign_key "vacunas", "vaccinations"
 end

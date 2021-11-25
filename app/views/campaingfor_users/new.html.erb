@@ -1,14 +1,16 @@
-<%= form_for @campaingfor_user do |f| %>
-    <div>
+<div class="container">
+    <%= form_for @campaingfor_user do |f| %>
+
+    <div class="field">
         <%= f.label "Camapaña" %>
         <%= f.select :campaingvaccine_id, options_from_collection_for_select(Campaingvaccine.all, :id, :name) %>
-        <% age = Date.today.year - current_user.nacimiento.year%>
-           <%age -= 1 if Date.today < current_user.nacimiento + age.years%>
-           <%if age>60%>
-              <%= f.select :turno_id, options_from_collection_for_select(Turno.where("Fecha_hora < date('now')"), :id, :Fecha_hora)%>
     </div>
     <div>
-        <%= f.submit %>
+        <%= f.label "Vacunatorio" %>
+        <%= f.select :vaccination_id, options_from_collection_for_select(Vaccination.all, :id, :nombre) %>
     </div>
-<%end%>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Inscribirse a campaña</button>
+    </div>
 <%end%>

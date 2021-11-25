@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-s">
+            <h4>Listado de personas</h4>
+        </div>
+
+        <div class="col">
+            <%= render "user/preval" %>
+        </div>
+
+        <div class="col">
+            <%= render "user/mayores" %>
+        </div>
+
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>email</th>
+                <th>Mas información</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @usuarios.each do |u| %>
+            <tr>
+                <td><%= u.nombre %></td>
+                <td><%= u.apellido %></td>
+                <td><%= u.email %></td>
+                <td><%= link_to "Ver turnos", turnos_path, class: 'btn btn-info btn-sm' %> </td>
+                <td><%= link_to "Ver más", showperfil_path(u.id), class: 'btn btn-info btn-sm' %> </td>
+                <%end%>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,29 @@
+<div class = "container">
+    <h3>Historial de vacunación</h3>
+    <table class = "table table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Vacunatorio</th>
+                <th>Direccion</th>
+            </tr>
+        </thead>
+        
+        <tr>
+            <td>
+                <th>
+                <% @usuarios.each do |u| %>
+                    <%= u.nombre %>
+                    <%= u.apellido %>
+                    <%= Time.zone.now - u.nacimiento.years  %>
+                    <%= u.dni %>
+                    <%= u.enfermedades %>
+                    <%= u.email %>
+                <%end%>
+                </th>
+            </td>
+        </tr>
+
+    </table>
+
+</div>

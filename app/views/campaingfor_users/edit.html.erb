@@ -1,10 +1,11 @@
 <%= form_for @campaingfor_user do |f| %>
 
-    <div>
-        <%= f.label "Camapaña" %>
-        <%= f.select :campaing_id, options_from_collection_for_select(Campaing.all, :id, :name) %>
+        <h1>Por favor, confirme el vacunatorio al que desea asistir</h1>
+        <%= f.label "Vacunatorio" %>
+        <%= f.select :vaccination_id, options_from_collection_for_select(Vaccination.all, :id, :nombre) %>
     </div>
-    <div>
-        <%= f.submit %>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Editar datos de campaña</button>
     </div>
 <%end%>
