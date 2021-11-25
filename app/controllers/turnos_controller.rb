@@ -13,21 +13,26 @@ class TurnosController < ApplicationController
 
 
     def create
-          c=2
+          c=530
           turnos = []
           fact=DateTime.now.to_date
           fact=fact+8.hours
-          fact=fact+9.day
+          fact=fact+1.day
           while(c>0)
-            if (fact.strftime("%u")!="6")&&(fact.strftime("%u")!="5")
-              if((fact.strftime("%H")>="08")&&(fact.strftime("%H")<="20"))
-                turnos.push({Fecha_hora:(fact+1.day).strftime("%Y%m%d %H:%M"), disponible:"true", vaccination_id:"2", asistio:"false"})
+            if (fact.strftime("%u")>"7")||(fact.strftime("%u")<"6")
+              if((fact.strftime("%H")>="08")&&(fact.strftime("%H")<"20"))
+                turnos.push({Fecha_hora:(fact).strftime("%Y%m%d %H:%M"), disponible:"true", vaccination_id:"2", asistio:"false"})
                 c=c-1
                 fact=fact+10.minutes
+              else
+                fact=fact+1.day
+                fact=fact.to_date
+                fact=fact+8.hours
               end
             else
               fact=fact.to_date
-              fact=fact+1.day+8.hours
+              fact=fact+8.hours
+              fact=fact+1.day
             end
           end
           Turno.create(turnos)
