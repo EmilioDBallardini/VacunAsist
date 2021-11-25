@@ -5,7 +5,13 @@ class UserController < ApplicationController
     end
 
     def show
-        @usuario=current_user
+        @c = User.new(user_params_vacs)
+        if @c.save
+            redirect_to root_path, notice: "Usuario registrado con exito"
+        else
+            flash[:error] = "Ocurrio un error al registrar al usuario"
+            render :new
+        end
     end
 
     def update
@@ -13,7 +19,7 @@ class UserController < ApplicationController
     end
 
     def edit
-        @usuario = User.find(params[:id])
+        #@usuario = User.find(params[:id])
     end
 
     def update
@@ -25,8 +31,47 @@ class UserController < ApplicationController
             end
     end
 
+    def new
+        #if current_user && current_user.admin?
+            @usuario = User.new
+        #else
+         #   if current_user && current_user.vacunador?
+          #      @usuario = User.new
+           # else
+            #    redirect_to root_path, notice: "Acceso inválido"
+         #   end
+       # end
+    end
+
+
+    def create
+        @c = User.new(user_params_vacs)
+        if @c.save
+            redirect_to root_path, notice: "Usuario registrado con exito"
+        else
+            flash[:error] = "Ocurrio un error al registrar al usuario"
+            render :new
+        end
+    end
+
+    # El admin busca por dni al usuario ya registrado y le asigna rol de vacunador
+    def createvacun
+        puts "#{params}>>>>>>>>>>>>>"
+        @usuario = User.new
+        if @usuario.save
+            redirect_to root_path, notice: "¡Creado con exito!"
+        else
+            flash[:error] = "Ha habido un error al crear al vacunador"
+            render :new
+        end
+    end
+
     private 
         def user_params
-            params.requiere(:user).permit(:nombre, :apellido, :email, :contraseña, :nacimiento)
+            params.require(:user).permit(:nombre, :apellido, :email, :contraseña, :nacimiento)
+        end
+
+        def user_params_vacs
+            params.require(:user).permit(:dni, :email, :password, :rol)
         end
 end
