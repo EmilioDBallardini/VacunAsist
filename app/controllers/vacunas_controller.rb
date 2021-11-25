@@ -3,6 +3,11 @@ class VacunasController < ApplicationController
       @vacunas = Vacuna.all
   end
 
+    def show
+        @vacuna = Vacuna.find(params[:id])
+    end    
+
+
   def new
       @vacuna = Vacuna.new
   end

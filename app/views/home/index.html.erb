@@ -65,6 +65,10 @@
       </div>
       <div class="col">
         <%= render "user/paciente/turnos" %>
+        
+        <% if (current_user.tipo = "Paciente") %>
+          <%= link_to "Ver historial de vacunación", vacunas_path, class: 'btn btn-info btn-sm' %>
+        <%end%>
       </div>
     </div>
 
@@ -72,11 +76,11 @@
     <% if (current_user.tipo == "Administrador")  %>
     <div class="row">
       <div class="col-m">
-        <%= link_to "Ver listado de usuarios", user_index_path, class: 'btn btn-info btn-sm' %><br />
+        <%= link_to "Ver listado de usuarios", user_index_path, class: 'btn btn-info btn-sm' %>
       </div>
-
     </div>
     <% end %>
+
 
 
   </div>
