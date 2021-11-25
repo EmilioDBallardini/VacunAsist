@@ -1,11 +1,13 @@
+<div class = "container">
 <h1>Listado de Vacunas</h1>
-<table>
+<table class="table">
     <tr>
         <thead>
             <th>Vacuna: </th>
         </thead>
     </tr>
-    <% @tipo_vacunas.each do |v| %>
+    <tbody>
+        <% @tipo_vacunas.each do |v| %>
         <tr>
             <td><%= v.nombre %></td>
             <td>
@@ -13,6 +15,8 @@
                 <%= link_to "Eliminar", v, method: :delete, data: { confirm: "¿Deseas eliminar este tipo de vacuna?"} %>
             </td>
         </tr>
-            <% end %>
+        <% end %>
+    </tbody>
 </table>
-<%= link_to "Ingresar tipo de vacunas", tipo_vacunas_new_path%>
+<%= link_to "Ingresar tipo de vacunas", tipo_vacunas_new_path, class: 'btn btn-info btn-sm'  %>
+</div>

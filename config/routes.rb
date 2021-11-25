@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :user
   get "users/:id/edit", to: "user#edit", as: 'useredit'
   get "users/:id/show", to: "user#show", as: 'showperfil'
-
+  get "users/index", to: "user#index", as: 'userindex'
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -61,6 +61,7 @@ Rails.application.routes.draw do
 
   resources :vacunas
   get 'vacunas', to: 'vacunas#index'
+  get 'vacunas/show', to: 'vacunas#show', as: 'showvacuna'
   get 'vacunas/new', to: 'vacunas#new'
   post 'vacunas', to: 'vacunas#create'
   get 'vacunas/:id/edit', to: 'vacunas#edit', as: 'editvacuna'

@@ -1,18 +1,22 @@
-<%= form_for @turno do |f| %>
+<form>
+    <div class="container">
+        <%= form_for @turno do |f| %>
 
-    <div>
-        <%= f.label :Fecha_hora %>
-        <%= f.datetime_field :Fecha_hora%>
+        <div>
+            <label class="form-label"><%= f.label :Fecha_hora %></label>
+            <%= f.datetime_field :Fecha_hora%>
+        </div>
+        <div>
+            <label class="form-label"><%= f.label :disponible %></label>
+            <%= f.check_box :disponible %>
+        </div>
+        <div>
+            <label class="form-label"><%= f.label :vaccination_id %></label>
+            <%= f.select :vaccination_id, options_from_collection_for_select(Vaccination.all, :id, :nombre) %>
+        </div>
+        <div>
+            <%= f.submit %>
+        </div>
+        <%end%>
     </div>
-    <div>
-        <%= f.label :disponible %>
-        <%= f.check_box :disponible %>
-    </div>
-    <div>
-        <%= f.label :vaccination_id %>
-        <%= f.select :vaccination_id, options_from_collection_for_select(Vaccination.all, :id, :nombre) %>
-    </div>
-    <div>
-        <%= f.submit %>
-    </div>
-<%end%>
+</form>

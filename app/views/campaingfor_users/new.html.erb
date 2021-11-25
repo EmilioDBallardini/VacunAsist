@@ -1,11 +1,14 @@
-<%= form_for @campaingfor_user do |f| %>
-    <div>
+<div class="container">
+    <%= form_for @campaingfor_user do |f| %>
+    
+    <div class="field">
         <%= f.label "Camapaña" %>
         <%= f.select :campaingvaccine_id, options_from_collection_for_select(Campaingvaccine.all, :id, :name) %>
     </div>
-<%end%>
 
-<div>
-    <%= f.submit %>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+
+    <%end%>
 </div>
-<%end%>

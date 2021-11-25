@@ -1,14 +1,15 @@
-<h1>Listado de Vacunas disponibles</h1>
-<table>
-    <tr>
-        <thead>
-            <th>Vacuna: </th>
-            <th>Lote: </th>
-            <th>Cantidad: </th>
-            <th>Vacunatorio: </th>
-        </thead>
-    </tr>
-    <% @vacunas.each do |v| %>
+<div class="container">
+    <h2>Listado de Vacunas disponibles</h2>
+    <table class="table">
+        <tr>
+            <thead>
+                <th>Vacuna: </th>
+                <th>Lote: </th>
+                <th>Cantidad: </th>
+                <th>Vacunatorio: </th>
+            </thead>
+        </tr>
+        <% @vacunas.each do |v| %>
         <tr>
             <td><%= v.tipo_vacuna.nombre %></td>
             <td><%= v.lote %></td>
@@ -19,6 +20,10 @@
                 <%= link_to "Eliminar", v, method: :delete, data: { confirm: "¿Deseas eliminar el registro de este vacunatorio?"} %>
             </td>
         </tr>
-            <% end %>
-</table>
-<%= link_to "Ingresar vacunas", vacunas_new_path%>
+        <% end %>
+    </table>
+
+    <% if (current_user.tipo == "Administrador")%>
+    <%= link_to "Ingresar vacunas", vacunas_new_path%>
+    <% end %>
+</div>

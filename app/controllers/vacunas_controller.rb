@@ -4,7 +4,7 @@ class VacunasController < ApplicationController
   end
 
     def show
-        @vacuna = Vacuna.find(params[:id])
+        @vacuna = Vacuna.find_by_id(params[:vaccination_id])
     end    
 
 

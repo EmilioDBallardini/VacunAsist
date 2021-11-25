@@ -9,4 +9,5 @@ class User < ApplicationRecord
   # has_many :usercampaings
   has_many :campaing, through: :campaingfor_user
   has_many :campaingfor_users
+  has_many :vacunas
 end

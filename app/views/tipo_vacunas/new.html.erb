@@ -1,9 +1,14 @@
-<%= form_for @tipo_vacuna do |f| %>
+<div class="container">
+    <%= form_for @tipo_vacuna do |f| %>
 
-    <div>
+    <div class="mb-3">
         <%= f.label :nombre %>
         <%= f.text_field :nombre %>
     </div>
+
+    <div class="actions">
         <%= f.submit %>
     </div>
+</div>
 <%end%>
+</div>
