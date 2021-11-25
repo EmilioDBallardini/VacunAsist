@@ -27,6 +27,11 @@ Rails.application.routes.draw do
   resources :noticium
   post "noticium/new", to: "noticium#new"
 
+  resources :user   
+  get 'user/createvacun', to: 'user#new', as: 'createvacunador'
+  post 'user/create', to: 'user#create', as: 'crearvacun' 
+ # get 'user/show', to: 'user#show'
+ 
 
   resources :campaingvaccines
   get 'campaingvaccines', to: 'campaingvaccines#index'

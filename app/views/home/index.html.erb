@@ -65,7 +65,7 @@
       <div class="col">
         <%= render "user/paciente/turnos" %>
 
-        <% if (current_user.tipo = "Paciente") %>
+        <% if (current_user.tipo == "Paciente") %>
         <%= link_to "Ver historial de vacunación", showvacuna_path, class: 'btn btn-info btn-sm' %>
         <%end%>
 

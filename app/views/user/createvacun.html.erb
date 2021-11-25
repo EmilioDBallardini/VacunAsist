@@ -1,0 +1,20 @@
+<h1> Crear nuevo usuario vacunador </h1>
+
+    <%= form_for (@c), url: createvacunador_path, method: :post do |f| %>
+      <div>
+        <%= f.label :dni %>
+        <%= f.number_field :dni, required: true, placeholder:"Ingrese el DNI del vacunador" %>
+      </div>
+      <div>
+        <%= f.label :email, "Correo electrónico" %>
+        <%= f.email_field :email, required: true, placeholder:"Ingrese el correo del vacunador" %>
+      </div>
+     <div class="field">
+          <%= f.label :password, "Contraseña" %>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+        <%= f.submit="Crear vacunador" %>
+    <%end%>
