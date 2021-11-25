@@ -15,7 +15,7 @@
       <tr>
         <td><%= @usuario.nombre %></td>
         <td><%= @usuario.apellido %></td>
-        <td><%= Time.zone.now - @usuario.nacimiento.year%></td>
+        <td><%= Time.zone.now - @usuario.nacimiento.year%p></td>
         <td><%= @usuario.dni %></td>
         <% if @usuario.enfermedad %>
         <td> Si </td>

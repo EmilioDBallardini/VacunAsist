@@ -1,28 +1,21 @@
 <div class="container">
-    <%= form_for @campaingfor_user do |f| %>
+    
+        <%= form_for @campaingfor_user do |f| %>
 
-    <div class="field">
-        <%= f.label "Camapaña" %>
-        <select class="form-select" aria-label="Default select example">
-
-            <option selected>
-                <%= f.select :campaingvaccine_id, options_from_collection_for_select(Campaingvaccine.all, :id, :name) %>
-            </option>
-        </select>
-    </div>
-    <div class="field">
-        <%= f.label "Vacunatorio" %>
-        <select class="form-select" aria-label="Default select example">
-
-            <option selected>
-                <%= f.select :vaccination_id, options_from_collection_for_select(Vaccination.all, :id, :nombre) %>
-            </option>
-        </select>
-    </div>
-
-    <div class="row">
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Inscribirse a campaña</button>
+        <div class="field">
+            <%= f.label "Campaña" %>
+            <%= f.select :campaingvaccine_id, options_from_collection_for_select(Campaingvaccine.all, :id, :name) %>
         </div>
-    </div>
-    <%end%>
+        <div class="field">
+            <%= f.label "Vacunatorio" %>
+            <%= f.select :vaccination_id, options_from_collection_for_select(Vaccination.all, :id, :nombre) %>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <%= f.submit%>
+            </div>
+        </div>
+        <%end%>
+    
+</div>

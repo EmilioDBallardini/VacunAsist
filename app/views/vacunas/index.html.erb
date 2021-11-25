@@ -24,6 +24,6 @@
     </table>
 
     <% if (current_user.tipo == "Administrador")%>
-    <%= link_to "Ingresar vacunas", vacunas_new_path%>
+    <%= link_to "Ingresar vacunas", vacunas_new_path, class: 'btn btn-info btn-sm'%>
     <% end %>
 </div>

@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_11_25_145057) do
   create_table "campaingfor_users", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "turno_id"
+    t.integer "turno_id" null: false
     t.integer "campaingvaccine_id", null: false
     t.integer "user_id", null: false
     t.integer "vaccination_id", null: false
