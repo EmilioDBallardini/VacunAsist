@@ -13,6 +13,10 @@
         <%= f.select :vaccination_id, options_from_collection_for_select(Vaccination.all, :id, :nombre) %>
     </div>
     <div>
+        <%= f.label "¿Asistió?"%>
+        <%= f.check_box :asistio %>
+    </div>
+    <div>
         <%= f.submit %>
     </div>
 <%end%>
