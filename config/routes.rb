@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "users/:id/edit", to: "user#edit", as: 'useredit'
   get "users/:id/show", to: "user#show", as: 'showperfil'
   get "users/index", to: "user#index", as: 'userindex'
+  get "users/new", to: 'user#new'
+  post "users", to: 'user#create'
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -25,6 +27,11 @@ Rails.application.routes.draw do
   resources :noticium
   post "noticium/new", to: "noticium#new"
 
+  resources :user   
+  get 'user/createvacun', to: 'user#new', as: 'createvacunador'
+  post 'user/create', to: 'user#create', as: 'crearvacun' 
+ # get 'user/show', to: 'user#show'
+ 
 
   resources :campaingvaccines
   get 'campaingvaccines', to: 'campaingvaccines#index'

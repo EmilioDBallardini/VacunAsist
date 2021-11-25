@@ -1,24 +1,29 @@
-<h1>Listado de Camapañas</h1>
-<table>
-    <tr>
+<div class="container">
+    <h3>Listado de Camapañas</h3>
+    <table class="table table-hover">
         <thead>
-            <th>Campaña: </th>
-            <th>Vacuna: </th>
-            <th>Inicio: </th>
-            <th>Fin: </th>
+            <tr>
+                <th>Campaña: </th>
+                <th>Vacuna: </th>
+                <th>Inicio: </th>
+                <th>Fin: </th>
+            </tr>
         </thead>
-    </tr>
-    <% @campaingvaccines.each do |c| %>
-        <tr>
-            <td><%= c.name %></td>
-            <td><%= c.vacuna.nombre %></td>
-            <td><%= c.inicio %></td>
-            <td><%= c.fin %></td>
-            <td>
-                <%= link_to "Editar", editcampaingvaccines_path(c)%>
-                <%= link_to "Eliminar", c, method: :delete, data: { confirm: "¿Deseas eliminar esta campaña?"} %>
-            </td>
-        </tr>
+        <% @campaingvaccines.each do |c| %>
+        <tbody>
+            <tr>
+                <td><%= c.name %></td>
+                <td><%= c.vacuna.nombre %></td>
+                <td><%= c.inicio %></td>
+                <td><%= c.fin %></td>
+                <td>
+                    <%= link_to "Editar", editcampaingvaccines_path(c), class:"btn btn-link"%>
+                    <%= link_to "Eliminar", c, method: :delete, data: { confir: "¿Deseas eliminar esta campaña?"},class:"btn btn-link" %>
+                </td>
+            </tr>
+
             <% end %>
-</table>
-<%= link_to "Crear campaña", campaingvaccines_new_path%>
+        <tbody>
+    </table>
+    <%= link_to "Crear campaña", campaingvaccines_new_path, class: 'btn btn-info btn-sm'%>
+</div>
