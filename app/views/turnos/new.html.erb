@@ -1,16 +1,7 @@
-<form>
+
 <div class="container">
 
 <%= form_for @turno do |f| %>
-    <div class ="field">
-        <label class="form-label"><%= f.label :vaccination_id %></label>
-        <select class="form-select">
-        <option selected>Elija el turno? Vacuna?</option><%= f.select :vaccination_id, options_from_collection_for_select(Vaccination.all, :id, :nombre) %>
-        
-        </select>
-    </div>
-    <div class="actions">
-        <%= f.submit %>
     <div>
         <%= f.label "Por favor, confirme la creación de turnos automáticos"%>
     </div>
@@ -20,4 +11,3 @@
 <%end%>
 
 </div>
-</form>

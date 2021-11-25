@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2021_11_21_000330) do
-=======
-ActiveRecord::Schema.define(version: 2021_11_25_145057) do
->>>>>>> 79f0774edf860e4c73667d81fa8600baeb087454
+ActiveRecord::Schema.define(version: 2021_11_25_231942) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -41,8 +37,7 @@ ActiveRecord::Schema.define(version: 2021_11_25_145057) do
     t.date "fin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "vacuna_id"
-    t.index ["vacuna_id"], name: "index_campaingvaccines_on_vacuna_id"
+    t.text "vacuna"
   end
 
   create_table "noticia", force: :cascade do |t|
@@ -115,7 +110,6 @@ ActiveRecord::Schema.define(version: 2021_11_25_145057) do
   add_foreign_key "campaingfor_users", "turnos"
   add_foreign_key "campaingfor_users", "users"
   add_foreign_key "campaingfor_users", "vaccinations"
-  add_foreign_key "campaingvaccines", "vacunas"
   add_foreign_key "turnos", "vaccinations"
   add_foreign_key "vacunas", "tipo_vacunas"
   add_foreign_key "vacunas", "vaccinations"
