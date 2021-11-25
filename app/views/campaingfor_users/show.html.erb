@@ -1,6 +1,4 @@
 <%= form_for @campaingfor_user do |f| %>
-
-        <h1>Por favor, confirme el vacunatorio al que desea asistir</h1>
         <%= f.label "Vacunatorio" %>
         <%= f.select :vaccination_id, options_from_collection_for_select(Vaccination.all, :id, :nombre) %>
     </div>

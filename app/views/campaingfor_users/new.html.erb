@@ -3,9 +3,12 @@
         <%= f.label "Camapaña" %>
         <%= f.select :campaingvaccine_id, options_from_collection_for_select(Campaingvaccine.all, :id, :name) %>
     </div>
-<%end%>
+    <div>
+        <%= f.label "Vacunatorio" %>
+        <%= f.select :vaccination_id, options_from_collection_for_select(Vaccination.all, :id, :nombre) %>
+    </div>
 
-<div>
-    <%= f.submit %>
-</div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Inscribirse a campaña</button>
+    </div>
 <%end%>

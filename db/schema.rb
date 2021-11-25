@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_24_001022) do
+ActiveRecord::Schema.define(version: 2021_11_25_145057) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -24,9 +24,11 @@ ActiveRecord::Schema.define(version: 2021_11_24_001022) do
     t.integer "turno_id"
     t.integer "campaingvaccine_id", null: false
     t.integer "user_id", null: false
+    t.integer "vaccination_id", null: false
     t.index ["campaingvaccine_id"], name: "index_campaingfor_users_on_campaingvaccine_id"
     t.index ["turno_id"], name: "index_campaingfor_users_on_turno_id"
     t.index ["user_id"], name: "index_campaingfor_users_on_user_id"
+    t.index ["vaccination_id"], name: "index_campaingfor_users_on_vaccination_id"
   end
 
   create_table "campaingvaccines", force: :cascade do |t|
@@ -80,6 +82,7 @@ ActiveRecord::Schema.define(version: 2021_11_24_001022) do
     t.string "nombre"
     t.string "apellido"
     t.boolean "enfermedad"
+    t.integer "espera"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -107,6 +110,7 @@ ActiveRecord::Schema.define(version: 2021_11_24_001022) do
   add_foreign_key "campaingfor_users", "campaingvaccines"
   add_foreign_key "campaingfor_users", "turnos"
   add_foreign_key "campaingfor_users", "users"
+  add_foreign_key "campaingfor_users", "vaccinations"
   add_foreign_key "campaingvaccines", "vacunas"
   add_foreign_key "turnos", "vaccinations"
   add_foreign_key "vacunas", "tipo_vacunas"

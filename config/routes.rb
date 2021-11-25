@@ -58,6 +58,7 @@ Rails.application.routes.draw do
   #get "campaingfor_users/:id/show", to: "campaingfor_users#show", as: 'showcampaingfor_user'
   patch 'campaingfor_users/:id', to: 'campaingfor_users#update'
   delete 'campaingfor_users/:id', to: 'campaingfor_users#destroy'
+  get 'campaingfor_users/:id/sol_turno', to: 'campaingfor_users#solturno', as: 'solturnocampaingfor_users'
 
   resources :vacunas
   get 'vacunas', to: 'vacunas#index'

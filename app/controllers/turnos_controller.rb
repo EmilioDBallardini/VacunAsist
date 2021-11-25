@@ -13,7 +13,9 @@ class TurnosController < ApplicationController
 
 
     def create
-        c=Vacuna.pluck("cantidad").last
+        @vacun=Vacuna.last
+        c=@vacun.cantidad
+        d=@vacun.cantidad
           turnos = []
           fact=DateTime.now.to_date
           fact=fact+8.hours
@@ -21,7 +23,7 @@ class TurnosController < ApplicationController
           while(c>0)
             if (fact.strftime("%u")>"7")||(fact.strftime("%u")<"6")
               if((fact.strftime("%H")>="08")&&(fact.strftime("%H")<"20"))
-                turnos.push({Fecha_hora:(fact).strftime("%Y%m%d %H:%M"), disponible:"true", vaccination_id:Vacuna.pluck("vaccination_id").last, asistio:"false"})
+                turnos.push({Fecha_hora:(fact).strftime("%Y%m%d %H:%M"), disponible:"true", vaccination_id: @vacun.vaccination_id, asistio:"false"})
                 c=c-1
                 fact=fact+10.minutes
               else
@@ -36,6 +38,28 @@ class TurnosController < ApplicationController
             end
           end
           Turno.create(turnos)
+          us_prior=User.where("espera=1")
+          us_prior.sort_by(&:updated_at)
+          us_notprior=User.where("espera=0")
+          us_notprior.sort_by(&:updated_at)
+
+
+          if(d>us_prior.length)
+            while(d!=us_prior.length)
+                @t=Turno.where("disponible=true").first
+                  idcamp=Campaingvaccine.where(vacuna_id:@vacun.id).pluck("id")
+                  CampaingforUser.find(idcamp)
+                else
+                  current_user.espera=1
+                  current_user.save
+                end
+              else
+                current_user.espera=0
+                current_user.save
+              end
+          end
+
+
           redirect_to turnos_path
     end
 
