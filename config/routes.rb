@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   resources :turnos
   get 'turnos', to: 'turnos#index'
   get 'turnos/new', to: 'turnos#new'
+  get 'turnos/show', to: 'turnos#show', as: 'showturno'
   post 'turnos', to: 'turnos#create'
   get 'turnos/:id/edit', to: 'turnos#edit', as: 'editturno'
   patch 'turnos/:id', to: 'turnos#update'

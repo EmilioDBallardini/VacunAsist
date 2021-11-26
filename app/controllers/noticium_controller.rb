@@ -9,19 +9,18 @@ class NoticiumController < ApplicationController
 	end
 
 	def create
-        @noticium = Noticium.new(params.permit(:noticium))
-
+        @noticium = Noticium.new(noticium_params)
+		@noticium.titulo = @noticium.titulo.upcase
         if @noticium.save
             redirect_to home_path, notice: "La noticia se cargó satisfactoriamente"
         else
-            flash[:error] = "Hubo un error al cargar la noticia"
             render :new
         end
 
 	end
 
 	def update
-        @noticium = noticium.find(params[:id])
+        @noticium = Noticium.find(params[:id])
 
         if @noticium.update(params.require(:noticium).permit(:titulo, :epigrafe, :pie_de_pagina, :cuerpo, :subtitulo))  
             redirect_to home_path, notice: "La noticia se editó satisfactoriamente"
@@ -37,6 +36,11 @@ class NoticiumController < ApplicationController
 	end
 
 	def destroy
+	end
+
+	private
+	def noticium_params
+		params.require(:noticium).permit(:titulo, :subtitulo, :epigrafe, :pie_de_pagina, :cuerpo, :img_url)
 	end
 	
 end

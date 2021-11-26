@@ -1,5 +1,5 @@
-<div class = "container">
-   <div class = "table">
+<div class="container">
+    <div class="table table-hover">
         <thead>
             <tr>
                 <th>Fecha y hora: </th>
@@ -10,13 +10,17 @@
             </tr>
         </thead>
         <tbody>
+            <%@turno.where("Fecha_hora>=Date('now')").where("Fecha_hora<=DateTime('now','23:59:59')").each do |t|%>
             <tr>
-                <td><%= @turno.Fecha_hora%></td>
-                <td><%= @turno.disponible%></td>
-                <td><%= @turno.vacunatorio%></td>
-                <td><%= @turno.direccion%></td>
-                <td><%= @turno.asistio%></td>
+                <td>
+                <th><%= t.Fecha_hora %></th>
+                <th><%= t.disponible %></th>
+                <th><%= t.vaccination.nombre %></th>
+                <th><%= t.vaccination.direccion %></th>
+                <th><%= t.asistio %></th>
+                </td>
             </tr>
+            <% end %>
         </tbody>
-   </div>
+    </div>
 </div>

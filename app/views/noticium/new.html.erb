@@ -1,90 +1,49 @@
-<div class="container">
-  
   <div class="row">
-    
+
     <div class="col">
       <h2>Nueva noticia</h2>
 
       <%= form_for(Noticium, as: @noticium, url: new_noticium_path(@noticium))  do |f| %>
 
-
       <div class="field">
         <h5>
-          <%= f.label :titulo %><br />  
+          <%= f.label :titulo %><br />
         </h5>
-        
+
         <%= f.text_field :titulo, autofocus: true, autocomplete: "titulo" %>
 
-        <% if @noticium.errors.messages_for(:titulo).present? %>
-            <p>
-            <%= @noticium.errors.messages_for(:titulo).join(" - ")%>
-            </p>
-        <% end %>
       </div>
 
       <div class="field">
         <%= f.label :subtitulo %><br />
         <%= f.text_field :subtitulo, autofocus: true, autocomplete: "subtitulo" %>
 
-        <% if @noticium.errors.messages_for(:subtitulo).present? %>
-            <p>
-            <%= @noticium.errors.messages_for(:subtitulo).join(" - ")%>
-            </p>
-        <% end %>
       </div>
 
       <div class="field">
         <%= f.label :epigrafe %><br />
         <%= f.text_field  :epigrafe, autofocus: true, autocomplete: "epigrafe" %>
 
-        <% if @noticium.errors.messages_for(:epigrafe).present? %>
-            <p>
-            <%= @noticium.errors.messages_for(:epigrafe).join(" - ")%>
-            </p>
-        <% end %>
       </div>
 
       <div class="field">
         <%= f.label :cuerpo %><br />
         <%= f.text_field :cuerpo, autofocus: true, autocomplete: "cuerpo" %>
-
-        <% if @noticium.errors.messages_for(:cuerpo).present? %>
-            <p>
-            <%= @noticium.errors.messages_for(:cuerpo).join(" - ")%>
-            </p>
-        <% end %>
       </div>
 
       <div class="field">
         <%= f.label :img_url %><br />
         <%= f.text_field :img_url, autofocus: true, autocomplete: "img_url" %>
-
-        <% if @noticium.errors.messages_for(:img_url).present? %>
-            <p>
-            <%= @noticium.errors.messages_for(:img_url).join(" - ")%>
-            </p>
-        <% end %>
-
       </div>
 
       <div class="field">
         <%= f.label :pie_de_pagina %><br />
         <%= f.text_field :pie_de_pagina, autofocus: true, autocomplete: "pie_de_pagina" %>
-
-        <% if @noticium.errors.messages_for(:pie_de_pagina).present? %>
-            <p>
-            <%= @noticium.errors.messages_for(:pie_de_pagina).join(" - ")%>
-            </p>
-        <% end %>
-
       </div>
 
-      <div class="actions">
-        <%= f.submit "Guardar noticia" %>
-      </div>
-    <% end %>
+      <%= f.submit %>
+
+      <% end %>
     </div>
 
   </div>
-</div>
-
