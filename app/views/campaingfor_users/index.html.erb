@@ -5,14 +5,21 @@
             <thead>
                 <th>Campaña: </th>
                 <th>Vacuna: </th>
+                <th>¿Turno Asignado:? </th>
             </thead>
         </tr>
         <tbody>
         <% @campaingfor_users.where(user_id:current_user.id).each do |c| %>
         <tr>
+
             <td><%= c.campaingvaccine.name %></td>
             <td><%= c.campaingvaccine.vacuna %></td>
+            <% if c.turno!=nil%>
+              <td>Turno asignado.</td>
             <td>
+            <%else%>
+              <td>"Turno no asignado aún."<td>
+            <%end%>
                 <%= link_to "Editar", editcampaingfor_users_path(c)%>
                 <%= link_to "Eliminar", c, method: :delete, data: { confirm: "¿Desea eliminar el registro a esta campaña?"} %>
             </td>
