@@ -4,10 +4,9 @@ Rails.application.routes.draw do
 
   resources :user
   get "users/:id/edit", to: "user#edit", as: 'useredit'
-  get "users/:id/show", to: "user#show", as: 'showperfil'
+  get "users/:id/show", to: "user#show", as: 'usershow'
   get "users/index", to: "user#index", as: 'userindex'
-  get "users/new", to: 'user#new'
-  post "users", to: 'user#create'
+
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',

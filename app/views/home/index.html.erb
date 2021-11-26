@@ -5,7 +5,7 @@
       <h3>Hola <%= current_user.nombre %> <%= current_user.apellido %></h3>
     </div>
 
-    <% if (current_user.tipo == "Administrador")  %>
+    <% if (current_user.role)  %>
 
 
     <div class="col-m">
@@ -65,7 +65,7 @@
       <div class="col">
         <%= render "user/paciente/turnos" %>
 
-        <% if (current_user.tipo == "Paciente") %>
+        <% if (!current_user.role) %>
         <%= link_to "Ver historial de vacunación", showvacuna_path, class: 'btn btn-info btn-sm' %>
         <%end%>
 

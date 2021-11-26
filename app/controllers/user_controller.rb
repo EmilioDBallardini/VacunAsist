@@ -5,13 +5,7 @@ class UserController < ApplicationController
     end
 
     def show
-        @c = User.new(user_params_vacs)
-        if @c.save
-            redirect_to root_path, notice: "Usuario registrado con exito"
-        else
-            flash[:error] = "Ocurrio un error al registrar al usuario"
-            render :new
-        end
+         @usuario = User.find(params[:id])
     end
 
     def update
@@ -72,6 +66,17 @@ class UserController < ApplicationController
         end
 
         def user_params_vacs
-            params.require(:user).permit(:dni, :email, :password, :rol)
+            params.require(:user).permit(:dni, :email, :contraseña, :nombre, :apellido, :nacimiento, :tipo, :dni, :nacimiento)
+        end
+
+        private 
+        def method_name_OLD
+            @c = User.new(user_params_vacs)
+            if @c.save
+                redirect_to root_path, notice: "Usuario registrado con exito"
+            else
+                flash[:error] = "Ocurrio un error al registrar al usuario"
+                render :new
+            end
         end
 end

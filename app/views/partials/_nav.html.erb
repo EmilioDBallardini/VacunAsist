@@ -1,41 +1,39 @@
 <div class="container">
   <div class="row">
     <div class="col align-center">
-        <%= image_tag "https://www.local.gov.uk/sites/default/files/styles/page_banner/public/images/public%20health%20CC%20banner.png?itok=5erbq83E", title: "Logo", class: "logo" %>
+      <%= image_tag "https://www.local.gov.uk/sites/default/files/styles/page_banner/public/images/public%20health%20CC%20banner.png?itok=5erbq83E", title: "Logo", class: "logo" %>
       <nav class="nav bg-ligth">
         <li class="nav-item">
-            
-            <%= link_to "Inicio", root_path, class:"nav-link"   %>
 
-                <% if user_signed_in? %>
-                    <li class="nav-item">
-                      <%= link_to "Ver perfil",  edit_user_registration_path, class:"nav-link" %>
-                    </li>
+          <%= link_to "Inicio", root_path, class:"nav-link"   %>
 
-                    <% #if current_user.admin? %>
-                      <li class="nav-item">
-                        <%= link_to "Crear Vacunador",  createvacunador_path, class:"nav-link" %>
-                      </li>
-                    <%#end%>
+          <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "Ver perfil", usershow_path(current_user.id), class:"nav-link" %>
+        </li>
 
-                    <li class="nav-item">
-                        <%= link_to "Cerrar sesión", destroy_user_session_path, data: { confirm: "¿Está seguro que desea cerrar sesión?" }, method: :delete, class:"nav-link"%>
-                    </li>
-                  <% else %>
+        <% if (current_user.role) %>
+        <li class="nav-item">
+          <%= link_to "Crear Vacunador",  createvacunador_path, class:"nav-link" %>
+        </li>
+        <%end%>
 
-                      <li class="nav-item">
-                          <%= link_to "Iniciar sesión", new_user_session_path, class:"nav-link" %>
-                      </li>
-                      <li class="nav-item">
-                          <%= link_to "Registrarse", new_user_registration_path, class:"nav-link" %>
-                      </li>
-                    
+        <li class="nav-item">
+          <%= link_to "Cerrar sesión", destroy_user_session_path, data: { confirm: "¿Está seguro que desea cerrar sesión?" }, method: :delete, class:"nav-link"%>
+        </li>
+        <% else %>
 
-              <% end %> 
-        </nav>
+        <li class="nav-item">
+          <%= link_to "Iniciar sesión", new_user_session_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Registrarse", new_user_registration_path, class:"nav-link" %>
+        </li>
+
+
+        <% end %>
+      </nav>
     </div>
 
   </div>
 </div>
-
-
