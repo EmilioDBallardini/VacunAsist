@@ -37,6 +37,6 @@ class CampaingvaccinesController < ApplicationController
 
   private
       def campaingvaccine_params
-          params.require(:campaingvaccine).permit(:name, :inicio, :fin, :vacuna_id)
+          params.require(:campaingvaccine).permit(:name, :inicio, :fin, :vacuna)
       end
 end

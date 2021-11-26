@@ -42,14 +42,14 @@ class TurnosController < ApplicationController
           us_prior.sort_by(&:updated_at)
           us_notprior=User.where("espera=0")
           us_notprior.sort_by(&:updated_at)
-
+          i=0
 
           if(d>us_prior.length)
-            i=0
-            while(d!=us_prior.length)
+            aux=us_prior.length
+            while(aux>0)
               @t=Turno.where("disponible=true").where(vaccination_id:@vacun.vaccination_id).first
               @u=User.find(us_prior[i].id)
-              idcamp=Campaingvaccine.where(vacuna_id:@vacun.id).pluck("id")
+              idcamp=Campaingvaccine.where(vacuna:@vacun.nombre).pluck("id")
               @campañaok=CampaingforUser.where(user_id:@u.id).where(campaingvaccine_id:idcamp[0]).first
               @campañaok.turno_id=@t.id
               @campañaok.save
@@ -58,17 +58,16 @@ class TurnosController < ApplicationController
               @u.espera=nil
               @u.save
               i=i+1
+              aux=aux-1
               d=d-1
             end
           else
-            i=0
             while(d<0)
               @t=Turno.where("disponible=true").where(vaccination_id:@vacun.vaccination_id).first
               @u=User.find(us_prior[i].id)
               idcamp=Campaingvaccine.where(vacuna_id:@vacun.id).pluck("id")
               campañaok=CampaingforUser.where(user_id:@u.id).where(campaingvaccine_id:idcamp[0]).first
               campañaok.turno_id=@t.id
-              campañaok.save
               @t.disponible=false
               @t.save
               @u.espera=nil

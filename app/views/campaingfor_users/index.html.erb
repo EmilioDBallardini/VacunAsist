@@ -1,6 +1,6 @@
 <div class="container">
     <h3>Listado de Camapañas registradas</h3>
-    <table class ="table"> 
+    <table class ="table">
         <tr>
             <thead>
                 <th>Campaña: </th>
@@ -11,7 +11,7 @@
         <% @campaingfor_users.where(user_id:current_user.id).each do |c| %>
         <tr>
             <td><%= c.campaingvaccine.name %></td>
-            <td><%= c.campaingvaccine.vacuna.nombre %></td>
+            <td><%= c.campaingvaccine.vacuna %></td>
             <td>
                 <%= link_to "Editar", editcampaingfor_users_path(c)%>
                 <%= link_to "Eliminar", c, method: :delete, data: { confirm: "¿Desea eliminar el registro a esta campaña?"} %>

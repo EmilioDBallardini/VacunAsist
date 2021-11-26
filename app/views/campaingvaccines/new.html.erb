@@ -13,8 +13,8 @@
         <%= f.date_field :fin %>
     </div>
     <div>
-        <%= f.label :vacuna_id %>
-        <%= f.select :vacuna_id, options_from_collection_for_select(Vacuna.all, :id, :nombre) %>
+        <%= f.label :vacuna %>
+        <%= f.text_field :vacuna %>
     </div>
     <div>
        <button type="submit" class="btn btn-primary">Crear campañas</button>
