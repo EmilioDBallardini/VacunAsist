@@ -17,5 +17,4 @@ class User < ApplicationRecord
   has_many :campaing, through: :campaingfor_user
   has_many :campaingfor_users
   has_many :vacunas
-  has_many :turnos, through: :campaingfor_users
 end
