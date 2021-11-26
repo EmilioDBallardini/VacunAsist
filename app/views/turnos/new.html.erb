@@ -1,13 +1,26 @@
+<<<<<<< HEAD
+
+<div class="container">
+
+<%= form_for @turno do |f| %>
+=======
 <%= form_for @turno do |f| %>
     <div class="field">
         <label class="form-label"><%= f.label "Vacunatorio" %></label>
         <%= f.select :vaccination_id, options_from_collection_for_select(Vaccination.all, :id, :nombre) %>
     </div>
 
+>>>>>>> c7f7e84c8e5a4348c66019a07f3dc9dd6791b44c
     <div>
         <%= f.label "Por favor, confirme la creación de turnos automáticos"%>
     </div>
     <div class="col-12">
         <button type="submit" class="btn btn-primary">Crear turnos</button>
     </div>
+<<<<<<< HEAD
 <%end%>
+
+</div>
+=======
+<%end%>
+>>>>>>> c7f7e84c8e5a4348c66019a07f3dc9dd6791b44c
